@@ -24,6 +24,7 @@ protected slots:
 	void slot_hintingChanged(int index);
 	void slot_gammaChanged(double gamma);
 	void slot_kerningChanged(int state);
+	void slot_ligaturesChanged(int state);
 private:
 	Ui::GMainWindow *ui;
 };

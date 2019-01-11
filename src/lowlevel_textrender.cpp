@@ -79,6 +79,12 @@ void GLowLevelTextRender::setKerning(bool kerning)
 	renderText();
 }
 
+void GLowLevelTextRender::setAllowLigatures(bool ligatures)
+{
+	m_allowLigatures = ligatures;
+	renderText();
+}
+
 bool GLowLevelTextRender::renderText(const QString& text)
 {
 	m_text = text;
@@ -125,19 +131,12 @@ bool GLowLevelTextRender::renderText()
 	//hb_buffer_set_content_type(m_d->m_hb_buffer, HB_BUFFER_CONTENT_TYPE_UNICODE);
 	hb_buffer_guess_segment_properties(m_d->m_hb_buffer);
 
-	// TODO: setup features
-	hb_feature_t kern_feature;
-	//kern_feature.tag = HB_TAG('k', 'e', 'r', 'n');
-	//kern_feature.value = 1;
-	if (m_useKerning)
-		hb_feature_from_string("+kern", -1, &kern_feature);
-	else
-		hb_feature_from_string("-kern", -1, &kern_feature);
-	hb_feature_t* hb_features = &kern_feature;
-	int hb_features_count = 1;
+	// Setup features
+	m_d->setKerning(m_useKerning);
+	m_d->setLigatures(m_allowLigatures);
 
 	// shape
-	hb_shape(m_d->m_hb_font, m_d->m_hb_buffer, hb_features, hb_features_count);
+	hb_shape(m_d->m_hb_font, m_d->m_hb_buffer, m_d->m_hb_features, m_d->m_hb_features_count);
 
 	unsigned int glyph_count = hb_buffer_get_length(m_d->m_hb_buffer);
 	hb_glyph_info_t *glyph_info = hb_buffer_get_glyph_infos(m_d->m_hb_buffer, &glyph_count);

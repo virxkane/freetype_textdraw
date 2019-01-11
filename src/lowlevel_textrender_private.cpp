@@ -18,12 +18,18 @@ GLowLevelTextRenderPrivate::GLowLevelTextRenderPrivate()
 #ifdef USE_HARFBUZZ
 	m_hb_buffer = hb_buffer_create();
 	m_hb_font = 0;
+	m_hb_features = 0;
+	m_hb_features_count = 0;
+	m_hb_feature_kern_pos = -1;
+	m_hb_feature_liga_pos = -1;
 #endif
 }
 
 GLowLevelTextRenderPrivate::~GLowLevelTextRenderPrivate()
 {
 #ifdef USE_HARFBUZZ
+	if (m_hb_features)
+		free(m_hb_features);
 	if (m_hb_buffer)
 		hb_buffer_destroy(m_hb_buffer);
 	if (m_hb_font)
@@ -153,4 +159,52 @@ bool GLowLevelTextRenderPrivate::setFontPixelSize(int size)
 		res = true;
 	}
 	return res;
+}
+
+bool GLowLevelTextRenderPrivate::setKerning(bool kerning)
+{
+	hb_feature_t* pfeature;
+	if (-1 == m_hb_feature_kern_pos)
+	{
+		// memory realloc
+		void* tmp = realloc(m_hb_features, sizeof(hb_feature_t)*(m_hb_features_count + 1));
+		if (tmp)
+		{
+			m_hb_features = (hb_feature_t*)tmp;
+		}
+		else
+			return false;
+		m_hb_feature_kern_pos = m_hb_features_count;
+		m_hb_features_count++;
+	}
+	pfeature = &m_hb_features[m_hb_feature_kern_pos];
+	if (kerning)
+		hb_feature_from_string("+kern", -1, pfeature);
+	else
+		hb_feature_from_string("-kern", -1, pfeature);
+	return true;
+}
+
+bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
+{
+	hb_feature_t* pfeature;
+	if (-1 == m_hb_feature_liga_pos)
+	{
+		// memory realloc
+		void* tmp = realloc(m_hb_features, sizeof(hb_feature_t)*(m_hb_features_count + 1));
+		if (tmp)
+		{
+			m_hb_features = (hb_feature_t*)tmp;
+		}
+		else
+			return false;
+		m_hb_feature_liga_pos = m_hb_features_count;
+		m_hb_features_count++;
+	}
+	pfeature = &m_hb_features[m_hb_feature_liga_pos];
+	if (liga)
+		hb_feature_from_string("+liga", -1, pfeature);
+	else
+		hb_feature_from_string("-liga", -1, pfeature);
+	return true;
 }

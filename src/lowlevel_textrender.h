@@ -46,6 +46,11 @@ public:
 		return m_useKerning;
 	}
 	void setKerning(bool kerning);
+	bool ligaturesAllowed() const
+	{
+		return m_allowLigatures;
+	}
+	void setAllowLigatures(bool ligatures);
 	QColor textColor() const
 	{
 		return m_textColor;
@@ -75,6 +80,7 @@ private:
 	AntialiasingMode m_antialiasingMode;
 	HintingMode m_hintingMode;
 	bool m_useKerning;
+	bool m_allowLigatures;
 	double m_gamma;
 	QImage* m_offscreen;
 };

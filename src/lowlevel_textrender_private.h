@@ -26,6 +26,8 @@ public:
 	bool setFontFace(const QString& fileName);
 	bool setFontPointSize(float size, int dpi = 96);
 	bool setFontPixelSize(int size);
+	bool setKerning(bool kerning);
+	bool setLigatures(bool liga);
 private:
 	// Freetype fields
 	FT_Library m_ft_library;
@@ -34,6 +36,10 @@ private:
 	// HarfBuzz fields
 	hb_buffer_t* m_hb_buffer;
 	hb_font_t* m_hb_font;
+	hb_feature_t* m_hb_features;
+	int m_hb_features_count;
+	int m_hb_feature_kern_pos;
+	int m_hb_feature_liga_pos;
 #endif
 };
 

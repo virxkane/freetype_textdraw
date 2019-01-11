@@ -148,6 +148,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="ligaturesBox">
+        <property name="text">
+         <string>Allow ligatures</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -360,6 +367,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>ligaturesBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>GMainWindow</receiver>
+   <slot>slot_ligaturesChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slot_textEdited(QString)</slot>
@@ -370,5 +393,6 @@
   <slot>slot_gammaChanged(double)</slot>
   <slot>slot_hintingChanged(int)</slot>
   <slot>slot_kerningChanged(int)</slot>
+  <slot>slot_ligaturesChanged(int)</slot>
  </slots>
 </ui>

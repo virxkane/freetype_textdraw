@@ -117,3 +117,8 @@ void GMainWindow::slot_kerningChanged(int state)
 {
 	ui->previewWidget->setKerning(ui->kerningBox->isChecked());
 }
+
+void GMainWindow::slot_ligaturesChanged(int state)
+{
+	ui->previewWidget->setAllowLigatures(ui->ligaturesBox->isChecked());
+}
