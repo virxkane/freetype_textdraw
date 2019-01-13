@@ -3,6 +3,7 @@
 
 #include <QtGui/QShowEvent>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
 
 GMainWindow::GMainWindow(QWidget *parent)
  : QMainWindow(parent),
@@ -31,6 +32,9 @@ void GMainWindow::showEvent(QShowEvent* event)
 		ui->previewWidget->renderText(ui->sampleTextLineEdit->text());
 
 		ui->previewWidget->setBackgroundColor(QColor::fromRgb(200, 240, 255));
+#ifndef USE_HARFBUZZ
+		ui->ligaturesBox->setEnabled(false);
+#endif
 
 		firstShow = false;
 	}

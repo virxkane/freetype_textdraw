@@ -26,8 +26,10 @@ public:
 	bool setFontFace(const QString& fileName);
 	bool setFontPointSize(float size, int dpi = 96);
 	bool setFontPixelSize(int size);
+#ifdef USE_HARFBUZZ
 	bool setKerning(bool kerning);
 	bool setLigatures(bool liga);
+#endif
 private:
 	// Freetype fields
 	FT_Library m_ft_library;

@@ -161,6 +161,8 @@ bool GLowLevelTextRenderPrivate::setFontPixelSize(int size)
 	return res;
 }
 
+#ifdef USE_HARFBUZZ
+
 bool GLowLevelTextRenderPrivate::setKerning(bool kerning)
 {
 	hb_feature_t* pfeature;
@@ -208,3 +210,5 @@ bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 		hb_feature_from_string("-liga", -1, pfeature);
 	return true;
 }
+
+#endif	// USE_HARFBUZZ

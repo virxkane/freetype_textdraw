@@ -192,7 +192,11 @@ bool GLowLevelTextRender::renderText()
 			ft_load_flag = FT_LOAD_DEFAULT;
 			break;
 	}
-	for (int i = 0; i < glyph_count /* m_text.length() */; i++)
+#ifdef USE_HARFBUZZ
+	for (int i = 0; i < glyph_count; i++)
+#else
+	for (int i = 0; i < m_text.length(); i++)
+#endif
 	{
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
 		glyph_index = glyph_info[i].codepoint;
@@ -302,6 +306,13 @@ bool GLowLevelTextRender::renderText()
 						m_d->m_ft_face->glyph->bitmap.width,
 						m_d->m_ft_face->glyph->bitmap.rows);
 #else
+			FT_Vector delta;
+			if (m_useKerning)
+			{
+				error = FT_Get_Kerning(m_d->m_ft_face, prev_glyph_index, glyph_index, FT_KERNING_DEFAULT, &delta);
+				if (!error)
+					kerning = delta.x >> 6;
+			}
 			p.drawImage(pen_x + m_d->m_ft_face->glyph->bitmap_left + kerning,
 						pen_y - m_d->m_ft_face->glyph->bitmap_top,
 						*glyphImage, 0, 0,
@@ -322,6 +333,10 @@ bool GLowLevelTextRender::renderText()
 #else
 		qDebug() << "glyph index" << i << "x_offset=" << (m_d->m_ft_face->glyph->bitmap_left);
 		qDebug() << "glyph index" << i << "x_advance=" << (m_d->m_ft_face->glyph->advance.x >> 6);
+		if (m_useKerning)
+		{
+			qDebug() << "glyph index" << i << "kerning=" << kerning;
+		}
 
 		pen_x += m_d->m_ft_face->glyph->advance.x >> 6;
 		pen_x += kerning;
