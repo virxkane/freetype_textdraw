@@ -74,18 +74,23 @@ void GMainWindow::slot_antialiasingChanged(int index)
 	{
 		case 0:
 			mode = GLowLevelTextRender::AntialiasNone;
+			ui->gammaBox->setEnabled(false);
 			break;
 		case 1:
 			mode = GLowLevelTextRender::AntialiasGray;
+			ui->gammaBox->setEnabled(true);
 			break;
 		case 2:
 			mode = GLowLevelTextRender::AntialiasLCD;
+			ui->gammaBox->setEnabled(true);
 			break;
 		case 3:
 			mode = GLowLevelTextRender::AntialiasLCD_V;
+			ui->gammaBox->setEnabled(true);
 			break;
 		default:
 			mode = GLowLevelTextRender::AntialiasGray;
+			ui->gammaBox->setEnabled(true);
 			break;
 	}
 	ui->previewWidget->setAntialiasingMode(mode);

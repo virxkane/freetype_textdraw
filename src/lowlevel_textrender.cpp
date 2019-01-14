@@ -309,9 +309,14 @@ bool GLowLevelTextRender::renderText()
 			FT_Vector delta;
 			if (m_useKerning)
 			{
-				error = FT_Get_Kerning(m_d->m_ft_face, prev_glyph_index, glyph_index, FT_KERNING_DEFAULT, &delta);
-				if (!error)
-					kerning = delta.x >> 6;
+				if (i > 0)
+				{
+					error = FT_Get_Kerning(m_d->m_ft_face, prev_glyph_index, glyph_index, FT_KERNING_DEFAULT, &delta);
+					if (error)
+						kerning = 0;
+					else
+						kerning = delta.x >> 6;
+				}
 			}
 			p.drawImage(pen_x + m_d->m_ft_face->glyph->bitmap_left + kerning,
 						pen_y - m_d->m_ft_face->glyph->bitmap_top,
