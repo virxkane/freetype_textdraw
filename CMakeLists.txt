@@ -36,3 +36,4 @@ if (WIN32)
 endif(WIN32)
 
 add_subdirectory(src)
+add_subdirectory(fc-lang_conv)
