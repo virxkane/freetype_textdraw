@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018-2019 by Chernov A.A.                               *
+ *   Copyright (C) 2002-2019 by Chernov A.A.                               *
  *   valexlin@gmail.com                                                    *
  *                                                                         *
  *   This program is free software: you can redistribute it and/or modify  *
@@ -16,38 +16,18 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef COLORBOX_PRIVATE_H
+#define COLORBOX_PRIVATE_H
 
-#include <QtGui/QColor>
-#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QComboBox>
 
-namespace Ui {
-	class GMainWindow;
-}
-
-class GMainWindow : public QMainWindow
+class QColorComboBox: public QComboBox
 {
-	Q_OBJECT
 public:
-	explicit GMainWindow(QWidget *parent = 0);
-	~GMainWindow();
+	QColorComboBox(QWidget* parent = 0);
+	~QColorComboBox();
 protected:
-	virtual void showEvent(QShowEvent *event);
-protected slots:
-	void slot_textEdited(const QString& text);
-	void slot_fontSizeChanged(double size);
-	void slot_fontFileEdited(const QString& text);
-	void slot_browseFont();
-	void slot_antialiasingChanged(int index);
-	void slot_hintingChanged(int index);
-	void slot_gammaChanged(double gamma);
-	void slot_kerningChanged(int state);
-	void slot_ligaturesChanged(int state);
-	void slot_textColorChanged(const QColor& c);
-	void slot_backgroundColorChanged(const QColor& c);
-private:
-	Ui::GMainWindow *ui;
+	virtual void paintEvent(QPaintEvent*);
 };
 
-#endif // MAINWINDOW_H
+#endif // COLORBOX_PRIVATE_H

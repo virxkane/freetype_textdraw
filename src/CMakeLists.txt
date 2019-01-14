@@ -14,6 +14,8 @@ set(SRC_LIST
 	mainwnd.ui
 	lowlevel_textrender.cpp
 	lowlevel_textrender_private.cpp
+	colorbox.cpp
+	colorbox_private.cpp
 )
 
 set(LDADD_LIBS)

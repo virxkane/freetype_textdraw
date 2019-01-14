@@ -40,7 +40,7 @@
          <double>6.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>72.000000000000000</double>
+         <double>150.000000000000000</double>
         </property>
         <property name="value">
          <double>12.000000000000000</double>
@@ -170,6 +170,63 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>text color:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QColorBox" name="textColorBox">
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>10</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>background color:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QColorBox" name="backgroundColorBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>10</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QLineEdit" name="sampleTextLineEdit">
       <property name="text">
        <string notr="true">The quick brown fox jumps over the lazy dog.</string>
@@ -218,6 +275,12 @@
    <class>GLowLevelTextRender</class>
    <extends>QWidget</extends>
    <header>lowlevel_textrender.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QColorBox</class>
+   <extends>QFrame</extends>
+   <header>colorbox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -394,5 +457,7 @@
   <slot>slot_hintingChanged(int)</slot>
   <slot>slot_kerningChanged(int)</slot>
   <slot>slot_ligaturesChanged(int)</slot>
+  <slot>slot_textColorChanged(QColor)</slot>
+  <slot>slot_backgroundColorChanged(QColor)</slot>
  </slots>
 </ui>
