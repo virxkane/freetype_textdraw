@@ -86,6 +86,7 @@ public:
 	void setBackgroundColor(const QColor& color);
 protected:
 	virtual void paintEvent(QPaintEvent *event);
+	void fontLangCheck();
 public slots:
 	bool renderText(const QString& text);
 	bool renderText();

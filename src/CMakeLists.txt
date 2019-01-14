@@ -8,6 +8,8 @@ set(EXE_NAME freetype-textdraw)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
+include_directories(${CMAKE_SOURCE_DIR}/fc-lang_conv/files)
+
 set(SRC_LIST
 	main.cpp
 	mainwnd.cpp
