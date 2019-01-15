@@ -25,3 +25,4 @@ unsigned int sv_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int sv_lang_orth_size = 22;
+#define SV_LANG_ORTH_SZ	22

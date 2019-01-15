@@ -77,3 +77,4 @@ unsigned int ky_lang_orth_chars[] = {
 	0x04af,
 };
 unsigned int ky_lang_orth_size = 70;
+#define KY_LANG_ORTH_SZ	70

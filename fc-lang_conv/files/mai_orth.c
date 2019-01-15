@@ -11,3 +11,4 @@ unsigned int mai_lang_orth_chars[] = {
 	0x094d,
 };
 unsigned int mai_lang_orth_size = 10;
+#define MAI_LANG_ORTH_SZ	10

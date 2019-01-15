@@ -33,3 +33,4 @@ unsigned int vi_lang_orth_chars[] = {
 	2, 0x1ea0, 0x1ef9,	// range
 };
 unsigned int vi_lang_orth_size = 66;
+#define VI_LANG_ORTH_SZ	66

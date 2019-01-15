@@ -43,3 +43,4 @@ unsigned int am_lang_orth_chars[] = {
 	2, 0x1328, 0x132f,	// range
 };
 unsigned int am_lang_orth_size = 98;
+#define AM_LANG_ORTH_SZ	98

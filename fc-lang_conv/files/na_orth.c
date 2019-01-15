@@ -16,3 +16,4 @@ unsigned int na_lang_orth_chars[] = {
 	2, 0x0168, 0x0169,	// range
 };
 unsigned int na_lang_orth_size = 15;
+#define NA_LANG_ORTH_SZ	15

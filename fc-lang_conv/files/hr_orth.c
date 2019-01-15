@@ -14,3 +14,4 @@ unsigned int hr_lang_orth_chars[] = {
 	2, 0x017d, 0x017e,	// range
 };
 unsigned int hr_lang_orth_size = 21;
+#define HR_LANG_ORTH_SZ	21

@@ -77,3 +77,4 @@ unsigned int bua_lang_orth_chars[] = {
 	0x04bb,
 };
 unsigned int bua_lang_orth_size = 70;
+#define BUA_LANG_ORTH_SZ	70

@@ -39,3 +39,4 @@ unsigned int nl_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int nl_lang_orth_size = 36;
+#define NL_LANG_ORTH_SZ	36

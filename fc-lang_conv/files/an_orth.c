@@ -23,3 +23,4 @@ unsigned int an_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int an_lang_orth_size = 20;
+#define AN_LANG_ORTH_SZ	20

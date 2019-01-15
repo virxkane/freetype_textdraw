@@ -11,3 +11,4 @@ unsigned int kok_lang_orth_chars[] = {
 	0x094d,
 };
 unsigned int kok_lang_orth_size = 10;
+#define KOK_LANG_ORTH_SZ	10

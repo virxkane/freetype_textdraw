@@ -25,3 +25,4 @@ unsigned int mt_lang_orth_chars[] = {
 	2, 0x017b, 0x017c,	// range
 };
 unsigned int mt_lang_orth_size = 30;
+#define MT_LANG_ORTH_SZ	30

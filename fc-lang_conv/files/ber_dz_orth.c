@@ -20,3 +20,4 @@ unsigned int ber_dz_lang_orth_chars[] = {
 	2, 0x1e92, 0x1e93,	// range
 };
 unsigned int ber_dz_lang_orth_size = 31;
+#define BER_DZ_LANG_ORTH_SZ	31

@@ -18,3 +18,4 @@ unsigned int mo_lang_orth_chars[] = {
 	0x0451,
 };
 unsigned int mo_lang_orth_size = 21;
+#define MO_LANG_ORTH_SZ	21

@@ -18,3 +18,4 @@ unsigned int lt_lang_orth_chars[] = {
 	2, 0x017d, 0x017e,	// range
 };
 unsigned int lt_lang_orth_size = 33;
+#define LT_LANG_ORTH_SZ	33

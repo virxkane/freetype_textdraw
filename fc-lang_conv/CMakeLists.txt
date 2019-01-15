@@ -17,4 +17,6 @@ endif(WIN32)
 add_executable(${EXE_NAME} WIN32 ${SRC_LIST})
 target_link_libraries(${EXE_NAME} ${LDADD_LIBS})
 
+add_library(fc-lang-cat STATIC fc-lang-cat.c)
+
 configure_file(update.sh.cmake ${CMAKE_CURRENT_BINARY_DIR}/update.sh @ONLY)

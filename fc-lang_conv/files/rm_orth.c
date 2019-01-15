@@ -23,3 +23,4 @@ unsigned int rm_lang_orth_chars[] = {
 	0x00f9,
 };
 unsigned int rm_lang_orth_size = 20;
+#define RM_LANG_ORTH_SZ	20

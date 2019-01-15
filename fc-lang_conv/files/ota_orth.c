@@ -16,3 +16,4 @@ unsigned int ota_lang_orth_chars[] = {
 	0x06cc,
 };
 unsigned int ota_lang_orth_size = 15;
+#define OTA_LANG_ORTH_SZ	15

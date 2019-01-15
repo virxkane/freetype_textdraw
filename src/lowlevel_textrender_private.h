@@ -48,6 +48,7 @@ public:
 	bool setKerning(bool kerning);
 	bool setLigatures(bool liga);
 #endif
+	bool checklanguageSupport(const QString& langCode);
 private:
 	// Freetype fields
 	FT_Library m_ft_library;

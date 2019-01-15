@@ -24,3 +24,4 @@ unsigned int nv_lang_orth_chars[] = {
 	0x0301,
 };
 unsigned int nv_lang_orth_size = 31;
+#define NV_LANG_ORTH_SZ	31

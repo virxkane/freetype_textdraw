@@ -27,3 +27,4 @@ unsigned int tr_lang_orth_chars[] = {
 	0x015f,
 };
 unsigned int tr_lang_orth_size = 24;
+#define TR_LANG_ORTH_SZ	24

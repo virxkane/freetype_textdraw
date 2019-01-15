@@ -17,3 +17,4 @@ unsigned int se_lang_orth_chars[] = {
 	2, 0x017d, 0x017e,	// range
 };
 unsigned int se_lang_orth_size = 26;
+#define SE_LANG_ORTH_SZ	26

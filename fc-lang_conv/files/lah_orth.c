@@ -26,3 +26,4 @@ unsigned int lah_lang_orth_chars[] = {
 	0x06d2,
 };
 unsigned int lah_lang_orth_size = 27;
+#define LAH_LANG_ORTH_SZ	27

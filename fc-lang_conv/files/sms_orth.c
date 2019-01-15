@@ -28,3 +28,4 @@ unsigned int sms_lang_orth_chars[] = {
 	2, 0x017d, 0x017e,	// range
 };
 unsigned int sms_lang_orth_size = 43;
+#define SMS_LANG_ORTH_SZ	43

@@ -9,3 +9,4 @@ unsigned int rn_lang_orth_chars[] = {
 	2, 0x0061, 0x007a,	// range
 };
 unsigned int rn_lang_orth_size = 6;
+#define RN_LANG_ORTH_SZ	6

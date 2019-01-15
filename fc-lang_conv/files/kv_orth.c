@@ -77,3 +77,4 @@ unsigned int kv_lang_orth_chars[] = {
 	0x04e7,
 };
 unsigned int kv_lang_orth_size = 70;
+#define KV_LANG_ORTH_SZ	70

@@ -17,3 +17,4 @@ unsigned int bm_lang_orth_chars[] = {
 	0x0254,
 };
 unsigned int bm_lang_orth_size = 14;
+#define BM_LANG_ORTH_SZ	14

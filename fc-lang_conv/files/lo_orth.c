@@ -24,3 +24,4 @@ unsigned int lo_lang_orth_chars[] = {
 	2, 0x0edc, 0x0edd,	// range
 };
 unsigned int lo_lang_orth_size = 39;
+#define LO_LANG_ORTH_SZ	39

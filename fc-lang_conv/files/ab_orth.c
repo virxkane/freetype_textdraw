@@ -20,3 +20,4 @@ unsigned int ab_lang_orth_chars[] = {
 	2, 0x04e0, 0x04e1,	// range
 };
 unsigned int ab_lang_orth_size = 27;
+#define AB_LANG_ORTH_SZ	27

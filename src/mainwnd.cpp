@@ -35,6 +35,8 @@ GMainWindow::GMainWindow(QWidget *parent)
 
 	ui->textColorBox->setDefaultColor(QColor(Qt::black));
 	ui->backgroundColorBox->setDefaultColor(QColor::fromRgb(200, 240, 255));
+
+	onFontChanged();
 }
 
 GMainWindow::~GMainWindow()
@@ -86,6 +88,7 @@ void GMainWindow::slot_browseFont()
 	{
 		ui->fontLineEdit->setText(path);
 		ui->previewWidget->setFontFace(path);
+		onFontChanged();
 	}
 }
 
@@ -162,4 +165,22 @@ void GMainWindow::slot_textColorChanged(const QColor& c)
 void GMainWindow::slot_backgroundColorChanged(const QColor& c)
 {
 	ui->previewWidget->setBackgroundColor(c);
+}
+
+void GMainWindow::onFontChanged()
+{
+	QStringList langList = ui->previewWidget->getSupportedLanguages();
+	QString langListStr;
+	QStringList::const_iterator it = langList.begin();
+	while (true)
+	{
+		if (it != langList.end())
+			langListStr += *it;
+		++it;
+		if (it != langList.end())
+			langListStr += QString(",");
+		else
+			break;
+	}
+	ui->langList->setPlainText(langListStr);
 }

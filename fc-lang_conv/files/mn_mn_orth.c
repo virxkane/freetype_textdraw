@@ -12,3 +12,4 @@ unsigned int mn_mn_lang_orth_chars[] = {
 	2, 0x04e8, 0x04e9,	// range
 };
 unsigned int mn_mn_lang_orth_size = 11;
+#define MN_MN_LANG_ORTH_SZ	11

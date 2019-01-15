@@ -25,3 +25,4 @@ unsigned int it_lang_orth_chars[] = {
 	0x00fa,
 };
 unsigned int it_lang_orth_size = 30;
+#define IT_LANG_ORTH_SZ	30

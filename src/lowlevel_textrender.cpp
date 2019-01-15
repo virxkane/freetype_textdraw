@@ -19,13 +19,13 @@
 #include "lowlevel_textrender.h"
 #include "lowlevel_textrender_private.h"
 
+#include "fc-lang-cat.h"
+
 #include <QtGui/QPainter>
 
 #include <QtCore/QDebug>
 
 #include <math.h>
-
-#include "ru_orth.c"
 
 GLowLevelTextRender::GLowLevelTextRender(QWidget *parent)
  : QWidget(parent)
@@ -57,7 +57,8 @@ bool GLowLevelTextRender::setFontFace(const QString& fileName)
 		res = m_d->setFontPointSize(m_fontSize);
 	if (res)
 	{
-		fontLangCheck();
+		m_d->checklanguageSupport("ru");
+		m_d->checklanguageSupport("uk");
 		renderText();
 	}
 	else
@@ -108,59 +109,17 @@ void GLowLevelTextRender::setAllowLigatures(bool ligatures)
 	renderText();
 }
 
-void GLowLevelTextRender::fontLangCheck()
+QStringList GLowLevelTextRender::getSupportedLanguages()
 {
-	int i;
-	unsigned int codePoint;
-	unsigned int tmp;
-	unsigned int first, second;
-	bool inRange = false;
-	FT_UInt glyphIndex;
-	bool fullSupport = true;
-	bool partialSupport = false;
-	for (i = 0; i < ru_lang_orth_size; )
+	QStringList list;
+	struct fc_lang_catalog* langPtr = fc_lang_cat;
+	for (int i = 0; i < fc_lang_cat_sz; i++)
 	{
-		// get codePoint
-		if (inRange && codePoint < second)
-		{
-			codePoint++;
-		}
-		else
-		{
-			tmp = ru_lang_orth_chars[i];
-			if (2 == tmp)
-			{
-				i++;
-				first = ru_lang_orth_chars[i];
-				i++;
-				second = ru_lang_orth_chars[i];
-				inRange = true;
-				codePoint = first;
-			}
-			else
-			{
-				codePoint = tmp;
-				inRange = false;
-				i++;
-			}
-		}
-		// check codePoint in current font
-		glyphIndex = FT_Get_Char_Index(m_d->m_ft_face, codePoint);
-		if (glyphIndex != 0)
-		{
-			partialSupport = true;
-		}
-		else
-		{
-			fullSupport = false;
-		}
+		if (m_d->checklanguageSupport(langPtr->lang_code))
+			list.append(QString(langPtr->lang_code));
+		langPtr++;
 	}
-	if (fullSupport)
-		qDebug() << "Font have full support of russian language";
-	else if (partialSupport)
-		qDebug() << "Font have partial support of russian language";
-	else
-		qDebug() << "Font DON'T have support of russian language";
+	return list;
 }
 
 bool GLowLevelTextRender::renderText(const QString& text)

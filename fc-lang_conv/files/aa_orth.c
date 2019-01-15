@@ -19,3 +19,4 @@ unsigned int aa_lang_orth_chars[] = {
 	0x00fb,
 };
 unsigned int aa_lang_orth_size = 16;
+#define AA_LANG_ORTH_SZ	16

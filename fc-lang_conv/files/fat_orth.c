@@ -30,3 +30,4 @@ unsigned int fat_lang_orth_chars[] = {
 	0x1ef9,
 };
 unsigned int fat_lang_orth_size = 27;
+#define FAT_LANG_ORTH_SZ	27

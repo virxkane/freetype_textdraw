@@ -11,3 +11,4 @@ unsigned int gv_lang_orth_chars[] = {
 	0x00e7,
 };
 unsigned int gv_lang_orth_size = 8;
+#define GV_LANG_ORTH_SZ	8

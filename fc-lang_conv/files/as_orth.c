@@ -21,3 +21,4 @@ unsigned int as_lang_orth_chars[] = {
 	2, 0x09f0, 0x09f1,	// range
 };
 unsigned int as_lang_orth_size = 36;
+#define AS_LANG_ORTH_SZ	36

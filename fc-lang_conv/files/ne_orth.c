@@ -22,3 +22,4 @@ unsigned int ne_lang_orth_chars[] = {
 	0x0970,
 };
 unsigned int ne_lang_orth_size = 39;
+#define NE_LANG_ORTH_SZ	39

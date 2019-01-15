@@ -73,3 +73,4 @@ unsigned int sel_lang_orth_chars[] = {
 	0x0451,
 };
 unsigned int sel_lang_orth_size = 66;
+#define SEL_LANG_ORTH_SZ	66

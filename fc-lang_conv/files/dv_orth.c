@@ -10,3 +10,4 @@ unsigned int dv_lang_orth_chars[] = {
 	2, 0x07a6, 0x07b0,	// range
 };
 unsigned int dv_lang_orth_size = 9;
+#define DV_LANG_ORTH_SZ	9

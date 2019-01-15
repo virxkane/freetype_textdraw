@@ -22,3 +22,4 @@ unsigned int csb_lang_orth_chars[] = {
 	2, 0x017b, 0x017c,	// range
 };
 unsigned int csb_lang_orth_size = 29;
+#define CSB_LANG_ORTH_SZ	29

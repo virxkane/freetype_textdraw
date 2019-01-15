@@ -17,3 +17,4 @@ unsigned int ty_lang_orth_chars[] = {
 	0x02bc,
 };
 unsigned int ty_lang_orth_size = 24;
+#define TY_LANG_ORTH_SZ	24

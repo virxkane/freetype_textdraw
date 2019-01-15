@@ -8,3 +8,4 @@ unsigned int ka_lang_orth_chars[] = {
 	2, 0x10d0, 0x10f0,	// range
 };
 unsigned int ka_lang_orth_size = 3;
+#define KA_LANG_ORTH_SZ	3

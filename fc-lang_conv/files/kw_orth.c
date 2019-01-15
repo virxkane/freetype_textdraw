@@ -15,3 +15,4 @@ unsigned int kw_lang_orth_chars[] = {
 	2, 0x0232, 0x0233,	// range
 };
 unsigned int kw_lang_orth_size = 24;
+#define KW_LANG_ORTH_SZ	24

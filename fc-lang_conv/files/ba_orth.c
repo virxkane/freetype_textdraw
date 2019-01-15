@@ -26,3 +26,4 @@ unsigned int ba_lang_orth_chars[] = {
 	0x04e9,
 };
 unsigned int ba_lang_orth_size = 21;
+#define BA_LANG_ORTH_SZ	21

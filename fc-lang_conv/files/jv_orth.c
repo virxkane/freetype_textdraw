@@ -11,3 +11,4 @@ unsigned int jv_lang_orth_chars[] = {
 	2, 0x00e8, 0x00e9,	// range
 };
 unsigned int jv_lang_orth_size = 12;
+#define JV_LANG_ORTH_SZ	12

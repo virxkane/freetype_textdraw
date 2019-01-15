@@ -19,3 +19,4 @@ unsigned int vo_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int vo_lang_orth_size = 24;
+#define VO_LANG_ORTH_SZ	24

@@ -2449,3 +2449,4 @@ unsigned int ko_lang_orth_chars[] = {
 	0xd79d,
 };
 unsigned int ko_lang_orth_size = 2442;
+#define KO_LANG_ORTH_SZ	2442

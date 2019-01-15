@@ -20,3 +20,4 @@ unsigned int si_lang_orth_chars[] = {
 	0x0df2,
 };
 unsigned int si_lang_orth_size = 31;
+#define SI_LANG_ORTH_SZ	31

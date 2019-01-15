@@ -19,3 +19,4 @@ unsigned int mh_lang_orth_chars[] = {
 	0x016b,
 };
 unsigned int mh_lang_orth_size = 16;
+#define MH_LANG_ORTH_SZ	16

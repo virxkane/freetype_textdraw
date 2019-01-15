@@ -18,6 +18,8 @@
 
 #include "lowlevel_textrender_private.h"
 
+#include "fc-lang-cat.h"
+
 #ifdef USE_HARFBUZZ
 // HarfBuzz-Freetype
 #include <hb-ft.h>
@@ -226,6 +228,77 @@ bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 	else
 		hb_feature_from_string("-liga", -1, pfeature);
 	return true;
+}
+
+bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
+{
+	bool fullSupport = false;
+	bool partialSupport = false;
+	struct fc_lang_catalog* lang_ptr = fc_lang_cat;
+	int i;
+	bool found = false;
+	for (i = 0; i < fc_lang_cat_sz; i++)
+	{
+		if (langCode.compare(lang_ptr->lang_code) == 0)
+		{
+			found = true;
+			break;
+		}
+		lang_ptr++;
+	}
+	if (found)
+	{
+		unsigned int codePoint;
+		unsigned int tmp;
+		unsigned int first, second;
+		bool inRange = false;
+		FT_UInt glyphIndex;
+		fullSupport = true;
+		for (i = 0; i < lang_ptr->char_set_sz; )
+		{
+			// get codePoint
+			if (inRange && codePoint < second)
+			{
+				codePoint++;
+			}
+			else
+			{
+				tmp = lang_ptr->char_set[i];
+				if (2 == tmp)
+				{
+					i++;
+					first = lang_ptr->char_set[i];
+					i++;
+					second = lang_ptr->char_set[i];
+					inRange = true;
+					codePoint = first;
+				}
+				else
+				{
+					codePoint = tmp;
+					inRange = false;
+					i++;
+				}
+			}
+			// check codePoint in current font
+			glyphIndex = FT_Get_Char_Index(m_ft_face, codePoint);
+			if (glyphIndex != 0)
+			{
+				partialSupport = true;
+			}
+			else
+			{
+				fullSupport = false;
+			}
+		}
+		if (fullSupport)
+			qDebug() << "Font have full support of language" << langCode;
+		else if (partialSupport)
+			qDebug() << "Font have partial support of language" << langCode;
+		else
+			qDebug() << "Font DON'T have support of language" << langCode;
+	}
+	return fullSupport;
 }
 
 #endif	// USE_HARFBUZZ

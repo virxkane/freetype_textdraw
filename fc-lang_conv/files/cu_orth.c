@@ -22,3 +22,4 @@ unsigned int cu_lang_orth_chars[] = {
 	2, 0x045f, 0x0479,	// range
 };
 unsigned int cu_lang_orth_size = 31;
+#define CU_LANG_ORTH_SZ	31

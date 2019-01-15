@@ -19,3 +19,4 @@ unsigned int kn_lang_orth_chars[] = {
 	2, 0x0ce0, 0x0ce1,	// range
 };
 unsigned int kn_lang_orth_size = 34;
+#define KN_LANG_ORTH_SZ	34

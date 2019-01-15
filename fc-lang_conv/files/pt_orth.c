@@ -39,3 +39,4 @@ unsigned int pt_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int pt_lang_orth_size = 36;
+#define PT_LANG_ORTH_SZ	36

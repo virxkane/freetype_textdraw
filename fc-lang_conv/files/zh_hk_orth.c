@@ -1090,3 +1090,4 @@ unsigned int zh_hk_lang_orth_chars[] = {
 	0x2a65b,
 };
 unsigned int zh_hk_lang_orth_size = 1083;
+#define ZH_HK_LANG_ORTH_SZ	1083

@@ -10,3 +10,4 @@ unsigned int to_lang_orth_chars[] = {
 	0x02bb,
 };
 unsigned int to_lang_orth_size = 7;
+#define TO_LANG_ORTH_SZ	7

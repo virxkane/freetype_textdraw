@@ -27,3 +27,4 @@ unsigned int ps_pk_lang_orth_chars[] = {
 	0x06d2,
 };
 unsigned int ps_pk_lang_orth_size = 30;
+#define PS_PK_LANG_ORTH_SZ	30

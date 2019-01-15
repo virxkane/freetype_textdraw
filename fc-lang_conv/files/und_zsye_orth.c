@@ -76,3 +76,4 @@ unsigned int und_zsye_lang_orth_chars[] = {
 	2, 0x1f645, 0x1f64f,	// range
 };
 unsigned int und_zsye_lang_orth_size = 145;
+#define UND_ZSYE_LANG_ORTH_SZ	145

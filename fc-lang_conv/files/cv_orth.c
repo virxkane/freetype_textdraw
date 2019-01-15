@@ -81,3 +81,4 @@ unsigned int cv_lang_orth_chars[] = {
 	0x04f3,
 };
 unsigned int cv_lang_orth_size = 74;
+#define CV_LANG_ORTH_SZ	74

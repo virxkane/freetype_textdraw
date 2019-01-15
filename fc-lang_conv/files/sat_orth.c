@@ -23,3 +23,4 @@ unsigned int sat_lang_orth_chars[] = {
 	0x0970,
 };
 unsigned int sat_lang_orth_size = 42;
+#define SAT_LANG_ORTH_SZ	42

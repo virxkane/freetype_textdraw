@@ -25,3 +25,4 @@ unsigned int hu_lang_orth_chars[] = {
 	2, 0x0170, 0x0171,	// range
 };
 unsigned int hu_lang_orth_size = 26;
+#define HU_LANG_ORTH_SZ	26

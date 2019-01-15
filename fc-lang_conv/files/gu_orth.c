@@ -20,3 +20,4 @@ unsigned int gu_lang_orth_chars[] = {
 	0x0ae0,
 };
 unsigned int gu_lang_orth_size = 33;
+#define GU_LANG_ORTH_SZ	33

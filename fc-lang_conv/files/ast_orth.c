@@ -27,3 +27,4 @@ unsigned int ast_lang_orth_chars[] = {
 	0x1e37,
 };
 unsigned int ast_lang_orth_size = 24;
+#define AST_LANG_ORTH_SZ	24

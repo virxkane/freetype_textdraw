@@ -23,3 +23,4 @@ unsigned int nn_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int nn_lang_orth_size = 32;
+#define NN_LANG_ORTH_SZ	32

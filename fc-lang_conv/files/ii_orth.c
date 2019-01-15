@@ -8,3 +8,4 @@ unsigned int ii_lang_orth_chars[] = {
 	2, 0xa000, 0xa48c,	// range
 };
 unsigned int ii_lang_orth_size = 3;
+#define II_LANG_ORTH_SZ	3

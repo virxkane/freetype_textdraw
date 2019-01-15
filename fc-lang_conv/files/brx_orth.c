@@ -23,3 +23,4 @@ unsigned int brx_lang_orth_chars[] = {
 	0x0970,
 };
 unsigned int brx_lang_orth_size = 46;
+#define BRX_LANG_ORTH_SZ	46

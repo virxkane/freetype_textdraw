@@ -75,3 +75,4 @@ unsigned int ik_lang_orth_chars[] = {
 	0x045e,
 };
 unsigned int ik_lang_orth_size = 68;
+#define IK_LANG_ORTH_SZ	68

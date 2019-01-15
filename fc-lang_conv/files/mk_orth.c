@@ -23,3 +23,4 @@ unsigned int mk_lang_orth_chars[] = {
 	0x045f,
 };
 unsigned int mk_lang_orth_size = 24;
+#define MK_LANG_ORTH_SZ	24

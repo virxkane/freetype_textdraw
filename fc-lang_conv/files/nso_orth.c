@@ -14,3 +14,4 @@ unsigned int nso_lang_orth_chars[] = {
 	2, 0x0160, 0x0161,	// range
 };
 unsigned int nso_lang_orth_size = 13;
+#define NSO_LANG_ORTH_SZ	13

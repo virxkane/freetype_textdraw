@@ -23,3 +23,4 @@ unsigned int gl_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int gl_lang_orth_size = 20;
+#define GL_LANG_ORTH_SZ	20

@@ -68,3 +68,4 @@ unsigned int ku_am_lang_orth_chars[] = {
 	2, 0x051a, 0x051d,	// range
 };
 unsigned int ku_am_lang_orth_size = 63;
+#define KU_AM_LANG_ORTH_SZ	63

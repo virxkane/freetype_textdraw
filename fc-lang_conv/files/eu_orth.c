@@ -13,3 +13,4 @@ unsigned int eu_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int eu_lang_orth_size = 10;
+#define EU_LANG_ORTH_SZ	10

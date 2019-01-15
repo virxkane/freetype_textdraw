@@ -18,3 +18,4 @@ unsigned int ku_tr_lang_orth_chars[] = {
 	2, 0x015e, 0x015f,	// range
 };
 unsigned int ku_tr_lang_orth_size = 17;
+#define KU_TR_LANG_ORTH_SZ	17

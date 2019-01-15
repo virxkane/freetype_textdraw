@@ -22,3 +22,4 @@ unsigned int ta_lang_orth_chars[] = {
 	0x0bd7,
 };
 unsigned int ta_lang_orth_size = 39;
+#define TA_LANG_ORTH_SZ	39

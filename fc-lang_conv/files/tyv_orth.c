@@ -77,3 +77,4 @@ unsigned int tyv_lang_orth_chars[] = {
 	0x04af,
 };
 unsigned int tyv_lang_orth_size = 70;
+#define TYV_LANG_ORTH_SZ	70

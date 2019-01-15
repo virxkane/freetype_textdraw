@@ -17,3 +17,4 @@ unsigned int smj_lang_orth_chars[] = {
 	0x00f1,
 };
 unsigned int smj_lang_orth_size = 14;
+#define SMJ_LANG_ORTH_SZ	14

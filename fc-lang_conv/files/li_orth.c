@@ -19,3 +19,4 @@ unsigned int li_lang_orth_chars[] = {
 	0x00f6,
 };
 unsigned int li_lang_orth_size = 16;
+#define LI_LANG_ORTH_SZ	16

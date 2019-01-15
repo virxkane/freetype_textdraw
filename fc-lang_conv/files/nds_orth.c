@@ -16,3 +16,4 @@ unsigned int nds_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int nds_lang_orth_size = 13;
+#define NDS_LANG_ORTH_SZ	13

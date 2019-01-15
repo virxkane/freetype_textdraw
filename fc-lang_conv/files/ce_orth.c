@@ -74,3 +74,4 @@ unsigned int ce_lang_orth_chars[] = {
 	0x0451,
 };
 unsigned int ce_lang_orth_size = 67;
+#define CE_LANG_ORTH_SZ	67

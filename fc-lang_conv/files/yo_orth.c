@@ -62,3 +62,4 @@ unsigned int yo_lang_orth_chars[] = {
 	2, 0x1ecc, 0x1ecd,	// range
 };
 unsigned int yo_lang_orth_size = 87;
+#define YO_LANG_ORTH_SZ	87

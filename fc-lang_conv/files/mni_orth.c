@@ -25,3 +25,4 @@ unsigned int mni_lang_orth_chars[] = {
 	0x09f1,
 };
 unsigned int mni_lang_orth_size = 40;
+#define MNI_LANG_ORTH_SZ	40

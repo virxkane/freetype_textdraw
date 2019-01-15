@@ -15,3 +15,4 @@ unsigned int ch_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int ch_lang_orth_size = 12;
+#define CH_LANG_ORTH_SZ	12

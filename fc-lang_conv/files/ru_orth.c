@@ -10,3 +10,4 @@ unsigned int ru_lang_orth_chars[] = {
 	0x0451,
 };
 unsigned int ru_lang_orth_size = 5;
+#define RU_LANG_ORTH_SZ	5

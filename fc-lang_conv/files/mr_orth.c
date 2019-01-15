@@ -11,3 +11,4 @@ unsigned int mr_lang_orth_chars[] = {
 	0x094d,
 };
 unsigned int mr_lang_orth_size = 10;
+#define MR_LANG_ORTH_SZ	10

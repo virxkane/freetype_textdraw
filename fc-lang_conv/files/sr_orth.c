@@ -17,3 +17,4 @@ unsigned int sr_lang_orth_chars[] = {
 	0x045f,
 };
 unsigned int sr_lang_orth_size = 22;
+#define SR_LANG_ORTH_SZ	22

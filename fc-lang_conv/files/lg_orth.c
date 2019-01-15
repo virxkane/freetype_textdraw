@@ -10,3 +10,4 @@ unsigned int lg_lang_orth_chars[] = {
 	2, 0x014a, 0x014b,	// range
 };
 unsigned int lg_lang_orth_size = 9;
+#define LG_LANG_ORTH_SZ	9

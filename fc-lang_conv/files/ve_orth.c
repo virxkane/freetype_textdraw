@@ -14,3 +14,4 @@ unsigned int ve_lang_orth_chars[] = {
 	2, 0x1e70, 0x1e71,	// range
 };
 unsigned int ve_lang_orth_size = 21;
+#define VE_LANG_ORTH_SZ	21

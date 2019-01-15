@@ -19,3 +19,4 @@ unsigned int sl_lang_orth_chars[] = {
 	0x017e,
 };
 unsigned int sl_lang_orth_size = 16;
+#define SL_LANG_ORTH_SZ	16

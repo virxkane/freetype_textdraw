@@ -21,3 +21,4 @@ unsigned int et_lang_orth_chars[] = {
 	0x017e,
 };
 unsigned int et_lang_orth_size = 18;
+#define ET_LANG_ORTH_SZ	18

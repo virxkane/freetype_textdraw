@@ -15,3 +15,4 @@ unsigned int bo_lang_orth_chars[] = {
 	2, 0x0f99, 0x0fb9,	// range
 };
 unsigned int bo_lang_orth_size = 22;
+#define BO_LANG_ORTH_SZ	22

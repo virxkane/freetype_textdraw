@@ -21,3 +21,4 @@ unsigned int br_lang_orth_chars[] = {
 	0x00fc,
 };
 unsigned int br_lang_orth_size = 18;
+#define BR_LANG_ORTH_SZ	18

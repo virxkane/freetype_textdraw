@@ -83,3 +83,4 @@ unsigned int tt_lang_orth_chars[] = {
 	0x04d9,
 };
 unsigned int tt_lang_orth_size = 76;
+#define TT_LANG_ORTH_SZ	76

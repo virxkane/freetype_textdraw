@@ -21,3 +21,4 @@ unsigned int fa_lang_orth_chars[] = {
 	0x06cc,
 };
 unsigned int fa_lang_orth_size = 24;
+#define FA_LANG_ORTH_SZ	24

@@ -41,3 +41,4 @@ unsigned int co_lang_orth_chars[] = {
 	0x00e6,
 };
 unsigned int co_lang_orth_size = 38;
+#define CO_LANG_ORTH_SZ	38

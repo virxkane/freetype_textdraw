@@ -136,6 +136,7 @@ int processFile(const char* langName, const char *sourceFileName, const char *de
 	count = parseFile(dirName, fin, fout);
 	fprintf(fout, "};\n");
 	fprintf(fout, "unsigned int %s_lang_orth_size = %u;\n", langName_LC, count);
+	fprintf(fout, "#define %s_LANG_ORTH_SZ	%u\n", langName_UC, count);
 	//fprintf(fout, "\n");
 	//fprintf(fout, "#endif	// %s_LANG_ORTH_H\n", langName_UC);
 	fclose(fout);

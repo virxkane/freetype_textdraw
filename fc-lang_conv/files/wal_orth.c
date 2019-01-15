@@ -40,3 +40,4 @@ unsigned int wal_lang_orth_chars[] = {
 	2, 0x1340, 0x1346,	// range
 };
 unsigned int wal_lang_orth_size = 87;
+#define WAL_LANG_ORTH_SZ	87

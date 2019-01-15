@@ -23,3 +23,4 @@ unsigned int sg_lang_orth_chars[] = {
 	2, 0x00fb, 0x00fc,	// range
 };
 unsigned int sg_lang_orth_size = 32;
+#define SG_LANG_ORTH_SZ	32

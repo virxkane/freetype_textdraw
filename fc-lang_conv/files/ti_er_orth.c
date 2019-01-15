@@ -35,3 +35,4 @@ unsigned int ti_er_lang_orth_chars[] = {
 	2, 0x1348, 0x1356,	// range
 };
 unsigned int ti_er_lang_orth_size = 74;
+#define TI_ER_LANG_ORTH_SZ	74

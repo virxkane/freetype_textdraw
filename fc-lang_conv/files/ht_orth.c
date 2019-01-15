@@ -13,3 +13,4 @@ unsigned int ht_lang_orth_chars[] = {
 	0x00f2,
 };
 unsigned int ht_lang_orth_size = 10;
+#define HT_LANG_ORTH_SZ	10

@@ -8,7 +8,7 @@ set(EXE_NAME freetype-textdraw)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
-include_directories(${CMAKE_SOURCE_DIR}/fc-lang_conv/files)
+include_directories(${CMAKE_SOURCE_DIR}/fc-lang_conv)
 
 set(SRC_LIST
 	main.cpp
@@ -28,7 +28,7 @@ if(WIN32)
 endif(WIN32)
 
 add_executable(${EXE_NAME} WIN32 ${SRC_LIST} ${QRC_GEN_FILES})
-target_link_libraries(${EXE_NAME} Qt5::Core Qt5::Gui Qt5::Widgets ${FREETYPE_LIBRARIES} ${HARFBUZZ_LIBRARIES} ${LDADD_LIBS})
+target_link_libraries(${EXE_NAME} Qt5::Core Qt5::Gui Qt5::Widgets ${FREETYPE_LIBRARIES} ${HARFBUZZ_LIBRARIES} ${LDADD_LIBS} fc-lang-cat)
 install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
 
 configure_file(valgrind_check.sh.cmake ${CMAKE_CURRENT_BINARY_DIR}/valgrind_check.sh)

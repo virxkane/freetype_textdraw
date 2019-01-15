@@ -15,3 +15,4 @@ unsigned int ro_lang_orth_chars[] = {
 	2, 0x0218, 0x021b,	// range
 };
 unsigned int ro_lang_orth_size = 16;
+#define RO_LANG_ORTH_SZ	16

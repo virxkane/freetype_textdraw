@@ -20,3 +20,4 @@ unsigned int bn_lang_orth_chars[] = {
 	0x09df,
 };
 unsigned int bn_lang_orth_size = 33;
+#define BN_LANG_ORTH_SZ	33

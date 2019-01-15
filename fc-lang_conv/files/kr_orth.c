@@ -12,3 +12,4 @@ unsigned int kr_lang_orth_chars[] = {
 	2, 0x024c, 0x024d,	// range
 };
 unsigned int kr_lang_orth_size = 11;
+#define KR_LANG_ORTH_SZ	11

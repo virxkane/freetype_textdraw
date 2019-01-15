@@ -11,3 +11,4 @@ unsigned int hne_lang_orth_chars[] = {
 	0x094d,
 };
 unsigned int hne_lang_orth_size = 10;
+#define HNE_LANG_ORTH_SZ	10

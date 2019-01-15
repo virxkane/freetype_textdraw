@@ -11,3 +11,4 @@ unsigned int id_lang_orth_chars[] = {
 	0x00e9,
 };
 unsigned int id_lang_orth_size = 8;
+#define ID_LANG_ORTH_SZ	8

@@ -122,3 +122,4 @@ unsigned int und_zmth_lang_orth_chars[] = {
 	2, 0x1d6a4, 0x1d6a5,	// range
 };
 unsigned int und_zmth_lang_orth_size = 213;
+#define UND_ZMTH_LANG_ORTH_SZ	213

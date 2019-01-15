@@ -29,3 +29,4 @@ unsigned int sd_lang_orth_chars[] = {
 	0x06be,
 };
 unsigned int sd_lang_orth_size = 44;
+#define SD_LANG_ORTH_SZ	44
