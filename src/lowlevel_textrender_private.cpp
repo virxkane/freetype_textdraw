@@ -230,6 +230,8 @@ bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 	return true;
 }
 
+#endif	// USE_HARFBUZZ
+
 bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 {
 	bool fullSupport = false;
@@ -248,9 +250,9 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 	}
 	if (found)
 	{
-		unsigned int codePoint;
+		unsigned int codePoint = 0;
 		unsigned int tmp;
-		unsigned int first, second;
+		unsigned int first, second = 0;
 		bool inRange = false;
 		FT_UInt glyphIndex;
 		fullSupport = true;
@@ -314,5 +316,3 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 	}
 	return fullSupport;
 }
-
-#endif	// USE_HARFBUZZ
