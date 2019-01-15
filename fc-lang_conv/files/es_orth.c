@@ -22,5 +22,4 @@ unsigned int es_lang_orth_chars[] = {
 	0x00fa,
 	0x00fc,
 };
-unsigned int es_lang_orth_size = 20;
 #define ES_LANG_ORTH_SZ	20

@@ -18,5 +18,4 @@ unsigned int doi_lang_orth_chars[] = {
 	2, 0x0950, 0x0952,	// range
 	2, 0x095b, 0x096f,	// range
 };
-unsigned int doi_lang_orth_size = 34;
 #define DOI_LANG_ORTH_SZ	34

@@ -14,5 +14,4 @@ unsigned int bi_lang_orth_chars[] = {
 	0x00dc,
 	0x00fc,
 };
-unsigned int bi_lang_orth_size = 12;
 #define BI_LANG_ORTH_SZ	12

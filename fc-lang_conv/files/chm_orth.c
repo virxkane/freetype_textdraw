@@ -82,5 +82,4 @@ unsigned int chm_lang_orth_chars[] = {
 	0x04f8,
 	0x04f9,
 };
-unsigned int chm_lang_orth_size = 76;
 #define CHM_LANG_ORTH_SZ	76

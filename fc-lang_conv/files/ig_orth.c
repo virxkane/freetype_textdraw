@@ -14,5 +14,4 @@ unsigned int ig_lang_orth_chars[] = {
 	0x1ee4,
 	0x1ee5,
 };
-unsigned int ig_lang_orth_size = 12;
 #define IG_LANG_ORTH_SZ	12

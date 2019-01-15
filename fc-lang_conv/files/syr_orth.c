@@ -8,5 +8,4 @@ unsigned int syr_lang_orth_chars[] = {
 	2, 0x0710, 0x072c,	// range
 	2, 0x0730, 0x073f,	// range
 };
-unsigned int syr_lang_orth_size = 6;
 #define SYR_LANG_ORTH_SZ	6

@@ -17,5 +17,4 @@ unsigned int te_lang_orth_chars[] = {
 	2, 0x0c55, 0x0c56,	// range
 	2, 0x0c60, 0x0c61,	// range
 };
-unsigned int te_lang_orth_size = 33;
 #define TE_LANG_ORTH_SZ	33

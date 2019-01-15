@@ -26,5 +26,4 @@ unsigned int gd_lang_orth_chars[] = {
 	0x00f3,
 	0x00f9,
 };
-unsigned int gd_lang_orth_size = 24;
 #define GD_LANG_ORTH_SZ	24

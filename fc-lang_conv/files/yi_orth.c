@@ -7,5 +7,4 @@
 unsigned int yi_lang_orth_chars[] = {
 	2, 0x05d0, 0x05ea,	// range
 };
-unsigned int yi_lang_orth_size = 3;
 #define YI_LANG_ORTH_SZ	3

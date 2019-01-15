@@ -35,5 +35,4 @@ unsigned int kl_lang_orth_chars[] = {
 	0x0138,
 	2, 0x0168, 0x0169,	// range
 };
-unsigned int kl_lang_orth_size = 37;
 #define KL_LANG_ORTH_SZ	37

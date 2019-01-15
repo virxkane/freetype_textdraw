@@ -21,5 +21,4 @@ unsigned int az_ir_lang_orth_chars[] = {
 	0x06cc,
 	0x0654,
 };
-unsigned int az_ir_lang_orth_size = 25;
 #define AZ_IR_LANG_ORTH_SZ	25

@@ -82,5 +82,4 @@ unsigned int sah_lang_orth_chars[] = {
 	0x04d8,
 	0x04d9,
 };
-unsigned int sah_lang_orth_size = 76;
 #define SAH_LANG_ORTH_SZ	76

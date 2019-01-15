@@ -14,5 +14,4 @@ unsigned int yap_lang_orth_chars[] = {
 	0x00d6,
 	0x00f6,
 };
-unsigned int yap_lang_orth_size = 12;
 #define YAP_LANG_ORTH_SZ	12

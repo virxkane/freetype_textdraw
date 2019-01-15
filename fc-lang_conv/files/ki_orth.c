@@ -12,5 +12,4 @@ unsigned int ki_lang_orth_chars[] = {
 	0x0168,
 	0x0169,
 };
-unsigned int ki_lang_orth_size = 10;
 #define KI_LANG_ORTH_SZ	10

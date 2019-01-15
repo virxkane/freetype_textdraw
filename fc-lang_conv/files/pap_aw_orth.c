@@ -10,5 +10,4 @@ unsigned int pap_aw_lang_orth_chars[] = {
 	0x00d1,
 	0x00f1,
 };
-unsigned int pap_aw_lang_orth_size = 8;
 #define PAP_AW_LANG_ORTH_SZ	8

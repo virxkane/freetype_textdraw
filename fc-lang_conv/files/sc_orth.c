@@ -18,5 +18,4 @@ unsigned int sc_lang_orth_chars[] = {
 	0x00f2,
 	0x00f9,
 };
-unsigned int sc_lang_orth_size = 16;
 #define SC_LANG_ORTH_SZ	16

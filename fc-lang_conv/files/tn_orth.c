@@ -13,5 +13,4 @@ unsigned int tn_lang_orth_chars[] = {
 	0x00f4,
 	2, 0x0160, 0x0161,	// range
 };
-unsigned int tn_lang_orth_size = 13;
 #define TN_LANG_ORTH_SZ	13

@@ -21,5 +21,4 @@ unsigned int ta_lang_orth_chars[] = {
 	2, 0x0bca, 0x0bcd,	// range
 	0x0bd7,
 };
-unsigned int ta_lang_orth_size = 39;
 #define TA_LANG_ORTH_SZ	39

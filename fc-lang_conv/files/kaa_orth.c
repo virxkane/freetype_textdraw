@@ -84,5 +84,4 @@ unsigned int kaa_lang_orth_chars[] = {
 	0x04d8,
 	0x04d9,
 };
-unsigned int kaa_lang_orth_size = 78;
 #define KAA_LANG_ORTH_SZ	78

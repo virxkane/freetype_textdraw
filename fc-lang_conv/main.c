@@ -135,7 +135,7 @@ int processFile(const char* langName, const char *sourceFileName, const char *de
 	fprintf(fout, "unsigned int %s_lang_orth_chars[] = {\n", langName_LC);
 	count = parseFile(dirName, fin, fout);
 	fprintf(fout, "};\n");
-	fprintf(fout, "unsigned int %s_lang_orth_size = %u;\n", langName_LC, count);
+	//fprintf(fout, "unsigned int %s_lang_orth_size = %u;\n", langName_LC, count);
 	fprintf(fout, "#define %s_LANG_ORTH_SZ	%u\n", langName_UC, count);
 	//fprintf(fout, "\n");
 	//fprintf(fout, "#endif	// %s_LANG_ORTH_H\n", langName_UC);
@@ -232,10 +232,13 @@ int parseFile(const char *dirName, FILE* fin, FILE* fout)
 							if (NULL != newfin)
 							{
 								fprintf(stderr, "processed included file: \"%s\"\n", incFileName);
-								count = parseFile(dirName, newfin, fout);
+								int inc_count = parseFile(dirName, newfin, fout);
 								fclose(newfin);
-								if (count > 0)
+								if (inc_count > 0)
+								{
 									ok = 1;
+									count += inc_count;
+								}
 							}
 						}
 					}

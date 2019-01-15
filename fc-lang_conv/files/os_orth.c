@@ -72,5 +72,4 @@ unsigned int os_lang_orth_chars[] = {
 	0x044f,
 	0x0451,
 };
-unsigned int os_lang_orth_size = 66;
 #define OS_LANG_ORTH_SZ	66

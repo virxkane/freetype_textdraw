@@ -30,5 +30,4 @@ unsigned int ca_lang_orth_chars[] = {
 	0x013f,
 	0x0140,
 };
-unsigned int ca_lang_orth_size = 28;
 #define CA_LANG_ORTH_SZ	28

@@ -13069,5 +13069,4 @@ unsigned int zh_tw_lang_orth_chars[] = {
 	0xfa0c,
 	0xfa0d,
 };
-unsigned int zh_tw_lang_orth_size = 13063;
 #define ZH_TW_LANG_ORTH_SZ	13063

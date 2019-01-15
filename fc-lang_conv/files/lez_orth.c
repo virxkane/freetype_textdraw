@@ -73,5 +73,4 @@ unsigned int lez_lang_orth_chars[] = {
 	0x044f,
 	0x0451,
 };
-unsigned int lez_lang_orth_size = 67;
 #define LEZ_LANG_ORTH_SZ	67

@@ -8,5 +8,4 @@ unsigned int th_lang_orth_chars[] = {
 	2, 0x0e01, 0x0e3a,	// range
 	2, 0x0e3f, 0x0e4e,	// range
 };
-unsigned int th_lang_orth_size = 6;
 #define TH_LANG_ORTH_SZ	6

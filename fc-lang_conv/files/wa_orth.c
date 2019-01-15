@@ -26,5 +26,4 @@ unsigned int wa_lang_orth_chars[] = {
 	0x00f4,
 	0x00fb,
 };
-unsigned int wa_lang_orth_size = 24;
 #define WA_LANG_ORTH_SZ	24

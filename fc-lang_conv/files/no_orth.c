@@ -26,5 +26,4 @@ unsigned int no_lang_orth_chars[] = {
 	0x00f4,
 	0x00f8,
 };
-unsigned int no_lang_orth_size = 24;
 #define NO_LANG_ORTH_SZ	24

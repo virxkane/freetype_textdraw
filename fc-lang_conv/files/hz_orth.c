@@ -11,5 +11,4 @@ unsigned int hz_lang_orth_chars[] = {
 	2, 0x1e12, 0x1e13,	// range
 	2, 0x1e4a, 0x1e4b,	// range
 };
-unsigned int hz_lang_orth_size = 13;
 #define HZ_LANG_ORTH_SZ	13

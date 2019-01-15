@@ -11,5 +11,4 @@ unsigned int km_lang_orth_chars[] = {
 	2, 0x17a9, 0x17b3,	// range
 	2, 0x17b6, 0x17c5,	// range
 };
-unsigned int km_lang_orth_size = 15;
 #define KM_LANG_ORTH_SZ	15

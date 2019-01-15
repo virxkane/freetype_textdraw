@@ -29,5 +29,4 @@ unsigned int tw_lang_orth_chars[] = {
 	0x1ef8,
 	0x1ef9,
 };
-unsigned int tw_lang_orth_size = 27;
 #define TW_LANG_ORTH_SZ	27

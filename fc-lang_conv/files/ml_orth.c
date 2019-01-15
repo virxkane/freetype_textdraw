@@ -16,5 +16,4 @@ unsigned int ml_lang_orth_chars[] = {
 	0x0d57,
 	2, 0x0d60, 0x0d61,	// range
 };
-unsigned int ml_lang_orth_size = 28;
 #define ML_LANG_ORTH_SZ	28

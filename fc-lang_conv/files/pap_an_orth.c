@@ -20,5 +20,4 @@ unsigned int pap_an_lang_orth_chars[] = {
 	2, 0x00f9, 0x00fa,	// range
 	0x00fc,
 };
-unsigned int pap_an_lang_orth_size = 30;
 #define PAP_AN_LANG_ORTH_SZ	30

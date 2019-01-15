@@ -21,5 +21,4 @@ unsigned int pa_lang_orth_chars[] = {
 	2, 0x0a59, 0x0a5c,	// range
 	2, 0x0a70, 0x0a74,	// range
 };
-unsigned int pa_lang_orth_size = 41;
 #define PA_LANG_ORTH_SZ	41

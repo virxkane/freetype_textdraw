@@ -13,5 +13,4 @@ unsigned int la_lang_orth_chars[] = {
 	2, 0x014c, 0x014f,	// range
 	2, 0x016a, 0x016d,	// range
 };
-unsigned int la_lang_orth_size = 21;
 #define LA_LANG_ORTH_SZ	21

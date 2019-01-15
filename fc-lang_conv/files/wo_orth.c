@@ -21,5 +21,4 @@ unsigned int wo_lang_orth_chars[] = {
 	0x00d3,
 	0x00f3,
 };
-unsigned int wo_lang_orth_size = 21;
 #define WO_LANG_ORTH_SZ	21

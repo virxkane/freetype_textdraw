@@ -21,5 +21,4 @@ unsigned int crh_lang_orth_chars[] = {
 	2, 0x0130, 0x0131,	// range
 	2, 0x015e, 0x015f,	// range
 };
-unsigned int crh_lang_orth_size = 25;
 #define CRH_LANG_ORTH_SZ	25

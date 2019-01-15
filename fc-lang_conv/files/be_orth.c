@@ -11,5 +11,4 @@ unsigned int be_lang_orth_chars[] = {
 	0x0456,
 	0x045e,
 };
-unsigned int be_lang_orth_size = 7;
 #define BE_LANG_ORTH_SZ	7

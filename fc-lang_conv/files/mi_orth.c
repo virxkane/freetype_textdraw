@@ -14,5 +14,4 @@ unsigned int mi_lang_orth_chars[] = {
 	2, 0x016a, 0x016b,	// range
 	2, 0x1e34, 0x1e35,	// range
 };
-unsigned int mi_lang_orth_size = 24;
 #define MI_LANG_ORTH_SZ	24

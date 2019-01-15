@@ -34,5 +34,4 @@ unsigned int cy_lang_orth_chars[] = {
 	0x1ef2,
 	0x1ef3,
 };
-unsigned int cy_lang_orth_size = 32;
 #define CY_LANG_ORTH_SZ	32

@@ -12,5 +12,4 @@ unsigned int bg_lang_orth_chars[] = {
 	0x044c,
 	2, 0x044e, 0x044f,	// range
 };
-unsigned int bg_lang_orth_size = 14;
 #define BG_LANG_ORTH_SZ	14

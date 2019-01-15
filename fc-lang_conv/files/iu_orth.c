@@ -54,5 +54,4 @@ unsigned int iu_lang_orth_chars[] = {
 	0x166f,
 	2, 0x1670, 0x1676,	// range
 };
-unsigned int iu_lang_orth_size = 108;
 #define IU_LANG_ORTH_SZ	108

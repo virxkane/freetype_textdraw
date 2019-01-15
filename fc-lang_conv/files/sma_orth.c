@@ -16,5 +16,4 @@ unsigned int sma_lang_orth_chars[] = {
 	0x00cf,
 	0x00ef,
 };
-unsigned int sma_lang_orth_size = 14;
 #define SMA_LANG_ORTH_SZ	14

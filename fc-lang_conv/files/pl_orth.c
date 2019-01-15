@@ -18,5 +18,4 @@ unsigned int pl_lang_orth_chars[] = {
 	2, 0x0179, 0x017a,	// range
 	2, 0x017b, 0x017c,	// range
 };
-unsigned int pl_lang_orth_size = 32;
 #define PL_LANG_ORTH_SZ	32

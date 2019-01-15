@@ -18,5 +18,4 @@ unsigned int tl_lang_orth_chars[] = {
 	2, 0x00f1, 0x00f4,	// range
 	2, 0x00f9, 0x00fb,	// range
 };
-unsigned int tl_lang_orth_size = 36;
 #define TL_LANG_ORTH_SZ	36

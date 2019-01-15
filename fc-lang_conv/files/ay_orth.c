@@ -16,5 +16,4 @@ unsigned int ay_lang_orth_chars[] = {
 	0x00f1,
 	0x00fc,
 };
-unsigned int ay_lang_orth_size = 14;
 #define AY_LANG_ORTH_SZ	14

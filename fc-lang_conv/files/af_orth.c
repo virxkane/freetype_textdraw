@@ -25,5 +25,4 @@ unsigned int af_lang_orth_chars[] = {
 	0x00fb,
 	0x0149,
 };
-unsigned int af_lang_orth_size = 23;
 #define AF_LANG_ORTH_SZ	23

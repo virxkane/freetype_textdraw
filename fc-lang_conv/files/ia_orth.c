@@ -8,5 +8,4 @@ unsigned int ia_lang_orth_chars[] = {
 	2, 0x0041, 0x005a,	// range
 	2, 0x0061, 0x007a,	// range
 };
-unsigned int ia_lang_orth_size = 6;
 #define IA_LANG_ORTH_SZ	6

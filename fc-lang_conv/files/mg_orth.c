@@ -12,5 +12,4 @@ unsigned int mg_lang_orth_chars[] = {
 	0x00d4,
 	0x00f4,
 };
-unsigned int mg_lang_orth_size = 10;
 #define MG_LANG_ORTH_SZ	10

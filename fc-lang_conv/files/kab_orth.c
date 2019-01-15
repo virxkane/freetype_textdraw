@@ -19,5 +19,4 @@ unsigned int kab_lang_orth_chars[] = {
 	2, 0x1e6c, 0x1e6d,	// range
 	2, 0x1e92, 0x1e93,	// range
 };
-unsigned int kab_lang_orth_size = 31;
 #define KAB_LANG_ORTH_SZ	31

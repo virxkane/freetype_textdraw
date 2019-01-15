@@ -33,5 +33,4 @@ unsigned int ee_lang_orth_chars[] = {
 	2, 0x0300, 0x0301,	// range
 	0x030c,
 };
-unsigned int ee_lang_orth_size = 61;
 #define EE_LANG_ORTH_SZ	61

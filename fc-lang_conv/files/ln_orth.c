@@ -25,5 +25,4 @@ unsigned int ln_lang_orth_chars[] = {
 	2, 0x0301, 0x0302,	// range
 	0x030c,
 };
-unsigned int ln_lang_orth_size = 47;
 #define LN_LANG_ORTH_SZ	47

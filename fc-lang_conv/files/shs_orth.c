@@ -26,5 +26,4 @@ unsigned int shs_lang_orth_chars[] = {
 	0x00ed,
 	0x0313,
 };
-unsigned int shs_lang_orth_size = 32;
 #define SHS_LANG_ORTH_SZ	32

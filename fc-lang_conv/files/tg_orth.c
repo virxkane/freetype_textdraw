@@ -84,5 +84,4 @@ unsigned int tg_lang_orth_chars[] = {
 	0x04ee,
 	0x04ef,
 };
-unsigned int tg_lang_orth_size = 78;
 #define TG_LANG_ORTH_SZ	78

@@ -24,5 +24,4 @@ unsigned int ug_lang_orth_chars[] = {
 	0x06d0,
 	0x06d5,
 };
-unsigned int ug_lang_orth_size = 30;
 #define UG_LANG_ORTH_SZ	30

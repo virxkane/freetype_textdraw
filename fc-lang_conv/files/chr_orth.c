@@ -7,5 +7,4 @@
 unsigned int chr_lang_orth_chars[] = {
 	2, 0x13a0, 0x13f4,	// range
 };
-unsigned int chr_lang_orth_size = 3;
 #define CHR_LANG_ORTH_SZ	3

@@ -26,5 +26,4 @@ unsigned int da_lang_orth_chars[] = {
 	0x00fa,
 	0x00fd,
 };
-unsigned int da_lang_orth_size = 24;
 #define DA_LANG_ORTH_SZ	24

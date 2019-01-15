@@ -10,5 +10,4 @@ unsigned int su_lang_orth_chars[] = {
 	0x00c9,
 	0x00e9,
 };
-unsigned int su_lang_orth_size = 8;
 #define SU_LANG_ORTH_SZ	8

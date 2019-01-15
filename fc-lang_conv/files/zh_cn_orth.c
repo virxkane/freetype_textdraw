@@ -6771,5 +6771,4 @@ unsigned int zh_cn_lang_orth_chars[] = {
 	0x9f9f,
 	0x9fa0,
 };
-unsigned int zh_cn_lang_orth_size = 6765;
 #define ZH_CN_LANG_ORTH_SZ	6765

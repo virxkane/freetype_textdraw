@@ -10,5 +10,4 @@ unsigned int bho_lang_orth_chars[] = {
 	2, 0x093f, 0x094c,	// range
 	0x094d,
 };
-unsigned int bho_lang_orth_size = 10;
 #define BHO_LANG_ORTH_SZ	10

@@ -26,5 +26,4 @@ unsigned int oc_lang_orth_chars[] = {
 	0x00f3,
 	0x00fa,
 };
-unsigned int oc_lang_orth_size = 24;
 #define OC_LANG_ORTH_SZ	24

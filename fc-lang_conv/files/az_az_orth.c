@@ -22,5 +22,4 @@ unsigned int az_az_lang_orth_chars[] = {
 	0x018f,
 	0x0259,
 };
-unsigned int az_az_lang_orth_size = 20;
 #define AZ_AZ_LANG_ORTH_SZ	20

@@ -7,5 +7,4 @@
 unsigned int nqo_lang_orth_chars[] = {
 	2, 0x07c0, 0x07fa,	// range
 };
-unsigned int nqo_lang_orth_size = 3;
 #define NQO_LANG_ORTH_SZ	3

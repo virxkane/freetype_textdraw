@@ -36,5 +36,4 @@ unsigned int ga_lang_orth_chars[] = {
 	0x1e6a,
 	0x1e6b,
 };
-unsigned int ga_lang_orth_size = 34;
 #define GA_LANG_ORTH_SZ	34

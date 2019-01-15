@@ -15,5 +15,4 @@ unsigned int ha_lang_orth_chars[] = {
 	0x01b3,
 	0x01b4,
 };
-unsigned int ha_lang_orth_size = 15;
 #define HA_LANG_ORTH_SZ	15

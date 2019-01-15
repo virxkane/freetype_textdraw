@@ -2320,5 +2320,4 @@ unsigned int ja_lang_orth_chars[] = {
 	0x9f3b,
 	0x9f62,
 };
-unsigned int ja_lang_orth_size = 2314;
 #define JA_LANG_ORTH_SZ	2314

@@ -14,5 +14,4 @@ unsigned int dz_lang_orth_chars[] = {
 	2, 0x0f90, 0x0f97,	// range
 	2, 0x0f99, 0x0fb9,	// range
 };
-unsigned int dz_lang_orth_size = 22;
 #define DZ_LANG_ORTH_SZ	22

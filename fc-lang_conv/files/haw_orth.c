@@ -14,5 +14,4 @@ unsigned int haw_lang_orth_chars[] = {
 	2, 0x016a, 0x016b,	// range
 	0x02bb,
 };
-unsigned int haw_lang_orth_size = 22;
 #define HAW_LANG_ORTH_SZ	22

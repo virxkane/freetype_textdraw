@@ -24,5 +24,4 @@ unsigned int fo_lang_orth_chars[] = {
 	0x00fa,
 	0x00fd,
 };
-unsigned int fo_lang_orth_size = 22;
 #define FO_LANG_ORTH_SZ	22

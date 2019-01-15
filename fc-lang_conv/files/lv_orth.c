@@ -21,5 +21,4 @@ unsigned int lv_lang_orth_chars[] = {
 	2, 0x016a, 0x016b,	// range
 	2, 0x017d, 0x017e,	// range
 };
-unsigned int lv_lang_orth_size = 45;
 #define LV_LANG_ORTH_SZ	45

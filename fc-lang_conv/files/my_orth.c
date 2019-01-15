@@ -11,5 +11,4 @@ unsigned int my_lang_orth_chars[] = {
 	2, 0x1029, 0x102a,	// range
 	2, 0x102c, 0x1032,	// range
 };
-unsigned int my_lang_orth_size = 13;
 #define MY_LANG_ORTH_SZ	13

@@ -26,5 +26,4 @@ unsigned int is_lang_orth_chars[] = {
 	0x00fd,
 	0x00fe,
 };
-unsigned int is_lang_orth_size = 24;
 #define IS_LANG_ORTH_SZ	24

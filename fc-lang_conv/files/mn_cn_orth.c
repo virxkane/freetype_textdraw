@@ -11,5 +11,4 @@ unsigned int mn_cn_lang_orth_chars[] = {
 	2, 0x1873, 0x1877,	// range
 	2, 0x1880, 0x18a9,	// range
 };
-unsigned int mn_cn_lang_orth_size = 15;
 #define MN_CN_LANG_ORTH_SZ	15

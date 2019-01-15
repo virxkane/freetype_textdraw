@@ -31,5 +31,4 @@ unsigned int ks_lang_orth_chars[] = {
 	0x0673,
 	0x06c4,
 };
-unsigned int ks_lang_orth_size = 33;
 #define KS_LANG_ORTH_SZ	33

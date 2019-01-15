@@ -11,5 +11,4 @@ unsigned int qu_lang_orth_chars[] = {
 	0x00f1,
 	0x02c8,
 };
-unsigned int qu_lang_orth_size = 9;
 #define QU_LANG_ORTH_SZ	9

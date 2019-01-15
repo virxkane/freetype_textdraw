@@ -11,5 +11,4 @@ unsigned int sco_lang_orth_chars[] = {
 	2, 0x021c, 0x021d,	// range
 	0x0292,
 };
-unsigned int sco_lang_orth_size = 11;
 #define SCO_LANG_ORTH_SZ	11

@@ -31,5 +31,4 @@ unsigned int fy_lang_orth_chars[] = {
 	0x00fb,
 	0x00fc,
 };
-unsigned int fy_lang_orth_size = 29;
 #define FY_LANG_ORTH_SZ	29

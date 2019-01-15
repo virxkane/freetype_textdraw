@@ -38,5 +38,4 @@ unsigned int cs_lang_orth_chars[] = {
 	0x017d,
 	0x017e,
 };
-unsigned int cs_lang_orth_size = 36;
 #define CS_LANG_ORTH_SZ	36

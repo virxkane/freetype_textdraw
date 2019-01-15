@@ -254,7 +254,7 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 		bool inRange = false;
 		FT_UInt glyphIndex;
 		fullSupport = true;
-		for (i = 0; i < lang_ptr->char_set_sz; )
+		for (i = 0; ; )
 		{
 			// get codePoint
 			if (inRange && codePoint < second)
@@ -263,15 +263,28 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 			}
 			else
 			{
+				if (i >= lang_ptr->char_set_sz)
+					break;
 				tmp = lang_ptr->char_set[i];
 				if (2 == tmp)
 				{
-					i++;
-					first = lang_ptr->char_set[i];
-					i++;
-					second = lang_ptr->char_set[i];
-					inRange = true;
-					codePoint = first;
+					if (i + 2 < lang_ptr->char_set_sz)
+					{
+						i++;
+						first = lang_ptr->char_set[i];
+						i++;
+						second = lang_ptr->char_set[i];
+						inRange = true;
+						codePoint = first;
+						i++;
+					}
+					else
+					{
+						// broken language char set
+						//qDebug() << "broken language char set";
+						fullSupport = false;
+						break;
+					}
 				}
 				else
 				{
@@ -290,6 +303,7 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 			{
 				fullSupport = false;
 			}
+			//qDebug() << "checking codePoint" << hex << codePoint << "in language char set" << langCode << (glyphIndex != 0 ? " yes" : "no");
 		}
 		if (fullSupport)
 			qDebug() << "Font have full support of language" << langCode;

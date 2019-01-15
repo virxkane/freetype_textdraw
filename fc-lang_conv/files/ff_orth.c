@@ -17,5 +17,4 @@ unsigned int ff_lang_orth_chars[] = {
 	0x0272,
 	2, 0x01b3, 0x01b4,	// range
 };
-unsigned int ff_lang_orth_size = 17;
 #define FF_LANG_ORTH_SZ	17

@@ -56,11 +56,7 @@ bool GLowLevelTextRender::setFontFace(const QString& fileName)
 	if (res)
 		res = m_d->setFontPointSize(m_fontSize);
 	if (res)
-	{
-		m_d->checklanguageSupport("ru");
-		m_d->checklanguageSupport("uk");
 		renderText();
-	}
 	else
 		qDebug() << "Failed to load font:" << fileName;
 	return res;

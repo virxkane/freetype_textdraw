@@ -12,5 +12,4 @@ unsigned int sq_lang_orth_chars[] = {
 	0x00e7,
 	0x00eb,
 };
-unsigned int sq_lang_orth_size = 10;
 #define SQ_LANG_ORTH_SZ	10

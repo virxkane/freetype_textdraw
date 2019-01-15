@@ -19,5 +19,4 @@ unsigned int or_lang_orth_chars[] = {
 	2, 0x0b5c, 0x0b5d,	// range
 	2, 0x0b5f, 0x0b61,	// range
 };
-unsigned int or_lang_orth_size = 39;
 #define OR_LANG_ORTH_SZ	39

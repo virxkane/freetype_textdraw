@@ -14,5 +14,4 @@ unsigned int eo_lang_orth_chars[] = {
 	2, 0x015c, 0x015d,	// range
 	2, 0x016c, 0x016d,	// range
 };
-unsigned int eo_lang_orth_size = 24;
 #define EO_LANG_ORTH_SZ	24

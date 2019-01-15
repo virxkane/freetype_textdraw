@@ -24,5 +24,4 @@ unsigned int ku_ir_lang_orth_chars[] = {
 	0x06cc,
 	0x06ce,
 };
-unsigned int ku_ir_lang_orth_size = 30;
 #define KU_IR_LANG_ORTH_SZ	30

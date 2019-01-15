@@ -14,5 +14,4 @@ unsigned int kk_lang_orth_chars[] = {
 	2, 0x04d8, 0x04d9,	// range
 	2, 0x04e8, 0x04e9,	// range
 };
-unsigned int kk_lang_orth_size = 22;
 #define KK_LANG_ORTH_SZ	22

@@ -9,5 +9,4 @@ unsigned int ny_lang_orth_chars[] = {
 	2, 0x0061, 0x007a,	// range
 	2, 0x0174, 0x0175,	// range
 };
-unsigned int ny_lang_orth_size = 9;
 #define NY_LANG_ORTH_SZ	9

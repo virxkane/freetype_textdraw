@@ -15,5 +15,4 @@ unsigned int uk_lang_orth_chars[] = {
 	0x0490,
 	0x0491,
 };
-unsigned int uk_lang_orth_size = 11;
 #define UK_LANG_ORTH_SZ	11

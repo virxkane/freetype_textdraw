@@ -40,5 +40,4 @@ unsigned int fr_lang_orth_chars[] = {
 	0x00c6,
 	0x00e6,
 };
-unsigned int fr_lang_orth_size = 38;
 #define FR_LANG_ORTH_SZ	38

@@ -31,5 +31,4 @@ unsigned int lb_lang_orth_chars[] = {
 	0x00fb,
 	0x00df,
 };
-unsigned int lb_lang_orth_size = 29;
 #define LB_LANG_ORTH_SZ	29

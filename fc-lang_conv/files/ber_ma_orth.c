@@ -22,5 +22,4 @@ unsigned int ber_ma_lang_orth_chars[] = {
 	0x2d65,
 	0x2d6f,
 };
-unsigned int ber_ma_lang_orth_size = 32;
 #define BER_MA_LANG_ORTH_SZ	32
