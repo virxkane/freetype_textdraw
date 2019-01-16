@@ -108,13 +108,20 @@ void GLowLevelTextRender::setAllowLigatures(bool ligatures)
 QStringList GLowLevelTextRender::getSupportedLanguages()
 {
 	QStringList list;
+
+	qDebug() << "number of records in fc_lang_cat =" << fc_lang_cat_sz;
+	int sz = sizeof(fc_lang_catalog)*fc_lang_cat_sz;
+
 	struct fc_lang_catalog* langPtr = fc_lang_cat;
 	for (int i = 0; i < fc_lang_cat_sz; i++)
 	{
+		sz += strlen(langPtr->lang_code) + 1;
+		sz += langPtr->char_set_sz*sizeof(unsigned int);
 		if (m_d->checklanguageSupport(langPtr->lang_code))
 			list.append(QString(langPtr->lang_code));
 		langPtr++;
 	}
+	qDebug() << "sizeof(fc_lang_cat) =" << sz << "bytes = " << sz/1024 << "kb";
 	return list;
 }
 
