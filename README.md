@@ -13,7 +13,7 @@ Draw some text with customizations:
 * change text or background color
 
 Please note that library HarfBuzz is required to implement ligatures and kerning.
-Also for selected font you can see for wich languages there is a full set of glyphs.
+Also for selected font you can see for which languages there is a full set of glyphs.
 <br/>
 The most important: you can study sources of this project to write your own.
 
