@@ -128,7 +128,7 @@ QStringList GLowLevelTextRender::getSupportedLanguages()
 bool GLowLevelTextRender::renderText(const QString& text)
 {
 	m_text = text;
-	renderText();
+	return renderText();
 }
 
 bool GLowLevelTextRender::renderText()

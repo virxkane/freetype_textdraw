@@ -176,6 +176,8 @@ void GMainWindow::onFontChanged()
 	{
 		if (it != langList.end())
 			langListStr += *it;
+		else
+			break;
 		++it;
 		if (it != langList.end())
 			langListStr += QString(",");
