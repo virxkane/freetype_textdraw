@@ -340,9 +340,10 @@ bool GLowLevelTextRender::renderText()
 			}
 #endif
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
+			// Non zero value of glyph_pos[i].y_offset can be found with diacritical mark and using font "Noto Nastaliq Urdu".
 			p.drawImage(pen_x + m_d->m_ft_face->glyph->bitmap_left + (glyph_pos[i].x_offset >> 6),
-						pen_y - m_d->m_ft_face->glyph->bitmap_top + (glyph_pos[i].y_offset >> 6),
-						*glyphImage, 0, (glyph_pos[i].y_offset >> 6),
+						pen_y - m_d->m_ft_face->glyph->bitmap_top - (glyph_pos[i].y_offset >> 6),
+						*glyphImage, 0, 0,
 						m_d->m_ft_face->glyph->bitmap.width,
 						m_d->m_ft_face->glyph->bitmap.rows);
 #else
@@ -371,6 +372,7 @@ bool GLowLevelTextRender::renderText()
 		qDebug() << "glyph index" << i << ": ft_bitmap_left =" << m_d->m_ft_face->glyph->bitmap_left;
 		qDebug() << "glyph index" << i << ": hb_x_offset =" << (glyph_pos[i].x_offset >> 6);
 		qDebug() << "glyph index" << i << ": hb_x_advance =" << (glyph_pos[i].x_advance >> 6);
+		qDebug() << "glyph index" << i << ": hb_y_offset =" << (glyph_pos[i].y_offset >> 6);
 		qDebug() << "glyph index" << i << ": ft_x_advance=" << (m_d->m_ft_face->glyph->advance.x >> 6);
 
 		pen_x += (glyph_pos[i].x_advance >> 6);
