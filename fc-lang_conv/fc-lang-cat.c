@@ -253,6 +253,8 @@
 #include "files/zh_tw_orth.c"
 #include "files/zu_orth.c"
 
+#include <string.h>
+
 #define FC_LANG_CAT_SZ	246
 struct fc_lang_catalog fc_lang_cat[] = {
 	"aa", AA_LANG_ORTH_SZ, aa_lang_orth_chars,
@@ -503,3 +505,23 @@ struct fc_lang_catalog fc_lang_cat[] = {
 	"zu", ZU_LANG_ORTH_SZ, zu_lang_orth_chars,
 };
 unsigned int fc_lang_cat_sz = 246;
+
+
+struct fc_lang_catalog* fc_lang_cat_find(const char* lang_code)
+{
+	struct fc_lang_catalog* lang_ptr = fc_lang_cat;
+	int i;
+	int found = 0;
+	for (i = 0; i < fc_lang_cat_sz; i++)
+	{
+		if (strcmp(lang_ptr->lang_code, lang_code) == 0)
+		{
+			found = 1;
+			break;
+		}
+	}
+	if (found)
+		return lang_ptr;
+	return 0;
+}
+
