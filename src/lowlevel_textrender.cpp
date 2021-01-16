@@ -160,6 +160,7 @@ bool GLowLevelTextRender::renderText()
 	QImage* glyphImage = new QImage(20, 20, QImage::Format_ARGB32);
 
 	int kerning = 0;
+	QVector<uint> ucs4_data = m_text.toUcs4();
 
 #define HARFBUZZ_SHAPING	1
 
@@ -167,7 +168,8 @@ bool GLowLevelTextRender::renderText()
 #if HARFBUZZ_SHAPING
 	// HarfBuzz code part
 	hb_buffer_reset(m_d->m_hb_buffer);
-	hb_buffer_add_utf16(m_d->m_hb_buffer, m_text.utf16(), m_text.length(), 0, m_text.length());
+	//hb_buffer_add_utf16(m_d->m_hb_buffer, m_text.utf16(), m_text.length(), 0, m_text.length());
+	hb_buffer_add_utf32(m_d->m_hb_buffer, ucs4_data.data(), ucs4_data.size(), 0, ucs4_data.size());
 	//hb_buffer_set_content_type(m_d->m_hb_buffer, HB_BUFFER_CONTENT_TYPE_UNICODE);
 	hb_buffer_guess_segment_properties(m_d->m_hb_buffer);
 
@@ -196,7 +198,6 @@ bool GLowLevelTextRender::renderText()
 	FT_UInt glyph_index;
 	FT_UInt prev_glyph_index;
 	pen_x = 10;
-	//pen_y = 10 + m_fontSize;
 	pen_y = 10 + m_d->m_ft_face->size->metrics.y_ppem;
 	FT_Render_Mode ft_render_mode;
 	switch (m_antialiasingMode)
@@ -233,19 +234,21 @@ bool GLowLevelTextRender::renderText()
 			ft_load_flag = FT_LOAD_DEFAULT;
 			break;
 	}
-#ifdef USE_HARFBUZZ
+#if USE_HARFBUZZ && HARFBUZZ_SHAPING
 	for (int i = 0; i < glyph_count; i++)
 #else
-	for (int i = 0; i < m_text.length(); i++)
+	for (int i = 0; i < ucs4_data.size(); i++)
 #endif
 	{
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
 		glyph_index = glyph_info[i].codepoint;
-		qDebug() << "glyph index" << i << ": codepoint =" << m_text[i].unicode();
-		qDebug() << "glyph index" << i << ": glyph index =" << glyph_info[i].codepoint;
+		qDebug() << "glyph index" << i << ": codepoint = " << QString("U+%1").arg(ucs4_data[glyph_info[i].cluster], 4, 16, QChar('0'));
+		qDebug() << Qt::dec << "glyph index" << i << ": glyph index =" << glyph_index;
 #else
 		/* retrieve glyph index from character code */
-		glyph_index = FT_Get_Char_Index(m_d->m_ft_face, m_text.at(i).unicode());
+		glyph_index = FT_Get_Char_Index(m_d->m_ft_face, ucs4_data.at(i));
+		qDebug() << "glyph index" << i << ": codepoint = " << QString("U+%1").arg(ucs4_data[i], 4, 16, QChar('0'));
+		qDebug() << "glyph index" << i << ": glyph index =" << glyph_index;
 #endif
 
 		/* load glyph image into the slot (erase previous one) */
