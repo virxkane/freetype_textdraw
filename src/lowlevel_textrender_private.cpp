@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018-2019 by Chernov A.A.                               *
+ *   Copyright (C) 2018-2021 by Chernov A.A.                               *
  *   valexlin@gmail.com                                                    *
  *                                                                         *
  *   This program is free software: you can redistribute it and/or modify  *
@@ -17,6 +17,8 @@
  ***************************************************************************/
 
 #include "lowlevel_textrender_private.h"
+
+#include <math.h>
 
 #include "fc-lang-cat.h"
 
@@ -143,7 +145,31 @@ bool GLowLevelTextRenderPrivate::setFontPointSize(float size, int dpi)
 		return false;
 	bool res = false;
 	FT_F26Dot6 height = (FT_F26Dot6)(size*64.0f);
-	FT_Error error = FT_Set_Char_Size(m_ft_face, 0, height, 0, dpi);
+	FT_F26Dot6 width = height;
+	FT_Error error = FT_Set_Char_Size(m_ft_face, width, height, dpi, dpi);
+	if (FT_Err_Invalid_Pixel_Size == error)
+	{
+		qDebug() << "fixed size font, can't be scaled...";
+		if (m_ft_face->num_fixed_sizes > 0 && m_ft_face->available_sizes != NULL)
+		{
+			// Find nearest fixed size
+			int idx = 0;
+			int height_px = (int)((float)dpi*size/72.0);
+			int prev_delta = abs(m_ft_face->available_sizes[0].height - height_px);
+			int delta;
+			for (int i = 1; i < m_ft_face->num_fixed_sizes; i++)
+			{
+				delta = abs(m_ft_face->available_sizes[i].height - height_px);
+				if (delta < prev_delta)
+				{
+					idx = i;
+				}
+				else
+					break;
+			}
+			error = FT_Select_Size(m_ft_face, idx);
+		}
+	}
 	if (FT_Err_Ok == error)
 	{
 #ifdef USE_HARFBUZZ
@@ -165,6 +191,28 @@ bool GLowLevelTextRenderPrivate::setFontPixelSize(int size)
 		return false;
 	bool res = false;
 	FT_Error error = FT_Set_Pixel_Sizes(m_ft_face, 0, size);
+	if (FT_Err_Invalid_Pixel_Size == error)
+	{
+		qDebug() << "fixed size font, can't be scaled...";
+		if (m_ft_face->num_fixed_sizes > 0 && m_ft_face->available_sizes != NULL)
+		{
+			// Find nearest fixed size
+			int idx = 0;
+			int prev_delta = abs(m_ft_face->available_sizes[0].height - size);
+			int delta;
+			for (int i = 1; i < m_ft_face->num_fixed_sizes; i++)
+			{
+				delta = abs(m_ft_face->available_sizes[i].height - size);
+				if (delta < prev_delta)
+				{
+					idx = i;
+				}
+				else
+					break;
+			}
+			error = FT_Select_Size(m_ft_face, idx);
+		}
+	}
 	if (FT_Err_Ok == error)
 	{
 #ifdef USE_HARFBUZZ

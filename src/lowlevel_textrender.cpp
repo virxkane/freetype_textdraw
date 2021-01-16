@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018-2019 by Chernov A.A.                               *
+ *   Copyright (C) 2018-2021 by Chernov A.A.                               *
  *   valexlin@gmail.com                                                    *
  *                                                                         *
  *   This program is free software: you can redistribute it and/or modify  *
@@ -196,7 +196,8 @@ bool GLowLevelTextRender::renderText()
 	FT_UInt glyph_index;
 	FT_UInt prev_glyph_index;
 	pen_x = 10;
-	pen_y = 10 + m_fontSize;
+	//pen_y = 10 + m_fontSize;
+	pen_y = 10 + m_d->m_ft_face->size->metrics.y_ppem;
 	FT_Render_Mode ft_render_mode;
 	switch (m_antialiasingMode)
 	{

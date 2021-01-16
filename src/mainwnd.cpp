@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018-2019 by Chernov A.A.                               *
+ *   Copyright (C) 2018-2021 by Chernov A.A.                               *
  *   valexlin@gmail.com                                                    *
  *                                                                         *
  *   This program is free software: you can redistribute it and/or modify  *
@@ -82,13 +82,13 @@ void GMainWindow::slot_fontFileEdited(const QString& text)
 void GMainWindow::slot_browseFont()
 {
 	QString dir = ui->fontLineEdit->text();
-	QString filter = tr("Font files (*.ttf *.otf *.pfa *.pfb)");
+	QString filter = tr("Font files (*.ttf *.otf *.pfa *.pfb *.pcf *.pcf.gz)");
 	QString path = QFileDialog::getOpenFileName(this, tr("Select font file..."), dir, filter);
 	if (!path.isEmpty())
 	{
 		ui->fontLineEdit->setText(path);
-		ui->previewWidget->setFontFace(path);
-		onFontChanged();
+		if (ui->previewWidget->setFontFace(path))
+			onFontChanged();
 	}
 }
 
