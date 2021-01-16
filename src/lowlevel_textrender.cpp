@@ -234,6 +234,8 @@ bool GLowLevelTextRender::renderText()
 			ft_load_flag = FT_LOAD_DEFAULT;
 			break;
 	}
+	if (FT_HAS_COLOR(m_d->m_ft_face))
+		ft_load_flag |= FT_LOAD_COLOR;
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
 	for (int i = 0; i < glyph_count; i++)
 #else
@@ -324,6 +326,33 @@ bool GLowLevelTextRender::renderText()
 							alpha = 1.0 - pow(1.0 - alpha, m_gamma);
 							dptr[g_x] = qRgba(m_textColor.red(), m_textColor.green(), m_textColor.blue(), (int)(alpha*255.0));
 							//dptr[g_x] += qRgba(m_backgroundColor.red(), m_backgroundColor.green(), m_backgroundColor.blue(), (int)((1.0 - alpha)*255.0));
+						}
+					}
+				}
+			}
+			else if (FT_PIXEL_MODE_BGRA == m_d->m_ft_face->glyph->bitmap.pixel_mode)
+			{
+				//glyphImage->fill(QColor(Qt::white));
+				QRgb* dptr;
+				double alpha;
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					int g_x, g_r;
+					unsigned char* sptr;
+					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
+					{
+						sptr = m_d->m_ft_face->glyph->bitmap.buffer + g_r*m_d->m_ft_face->glyph->bitmap.pitch;
+						dptr = (QRgb*)glyphImage->scanLine(g_r);
+						for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
+						{
+							// now in ptr[g_x] - alpha
+							// in dptr[g_x] - target RGBA values
+							// transform 0 - 255 range to 0.0 - 1.0
+							alpha = ((double)sptr[4*g_x + 3])/255.0;
+							// apply inverse gamma correction
+							alpha = 1.0 - pow(1.0 - alpha, m_gamma);
+							dptr[g_x] = qRgba(sptr[4*g_x + 2], sptr[4*g_x + 1], sptr[4*g_x], (int)(alpha*255.0));
+							dptr[g_x] = qUnpremultiply(dptr[g_x]);
 						}
 					}
 				}
