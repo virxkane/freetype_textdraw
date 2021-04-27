@@ -27,6 +27,8 @@
 
 #include <math.h>
 
+//#define _DEBUG_DRAW
+
 GLowLevelTextRender::GLowLevelTextRender(QWidget *parent)
  : QWidget(parent)
 {
@@ -244,13 +246,17 @@ bool GLowLevelTextRender::renderText()
 	{
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
 		glyph_index = glyph_info[i].codepoint;
+#ifdef _DEBUG_DRAW
 		qDebug() << "glyph index" << i << ": codepoint = " << QString("U+%1").arg(ucs4_data[glyph_info[i].cluster], 4, 16, QChar('0'));
 		qDebug() << Qt::dec << "glyph index" << i << ": glyph index =" << glyph_index;
+#endif
 #else
 		/* retrieve glyph index from character code */
 		glyph_index = FT_Get_Char_Index(m_d->m_ft_face, ucs4_data.at(i));
+#ifdef _DEBUG_DRAW
 		qDebug() << "glyph index" << i << ": codepoint = " << QString("U+%1").arg(ucs4_data[i], 4, 16, QChar('0'));
 		qDebug() << "glyph index" << i << ": glyph index =" << glyph_index;
+#endif
 #endif
 
 		/* load glyph image into the slot (erase previous one) */
@@ -402,21 +408,25 @@ bool GLowLevelTextRender::renderText()
 		}
 		/* increment pen position */
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
+#ifdef _DEBUG_DRAW
 		qDebug() << "glyph index" << i << ": ft_bitmap_left =" << m_d->m_ft_face->glyph->bitmap_left;
 		qDebug() << "glyph index" << i << ": hb_x_offset =" << (glyph_pos[i].x_offset >> 6);
 		qDebug() << "glyph index" << i << ": hb_x_advance =" << (glyph_pos[i].x_advance >> 6);
 		qDebug() << "glyph index" << i << ": hb_y_offset =" << (glyph_pos[i].y_offset >> 6);
 		qDebug() << "glyph index" << i << ": ft_x_advance=" << (m_d->m_ft_face->glyph->advance.x >> 6);
+#endif
 
 		pen_x += (glyph_pos[i].x_advance >> 6);
 		pen_y += (glyph_pos[i].y_advance >> 6);
 #else
+#ifdef _DEBUG_DRAW
 		qDebug() << "glyph index" << i << "x_offset=" << (m_d->m_ft_face->glyph->bitmap_left);
 		qDebug() << "glyph index" << i << "x_advance=" << (m_d->m_ft_face->glyph->advance.x >> 6);
 		if (m_useKerning)
 		{
 			qDebug() << "glyph index" << i << "kerning=" << kerning;
 		}
+#endif
 
 		pen_x += m_d->m_ft_face->glyph->advance.x >> 6;
 		pen_x += kerning;

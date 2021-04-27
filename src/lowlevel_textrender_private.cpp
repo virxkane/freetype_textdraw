@@ -122,6 +122,9 @@ bool GLowLevelTextRenderPrivate::setFontFace(const QString& fileName)
 	{
 		// OK
 		qDebug() << "Font face created OK.";
+		qDebug() << "family_name: " << m_ft_face->family_name;
+		qDebug() << "style_flags: " << m_ft_face->style_flags;
+		qDebug() << "style_name: " << m_ft_face->style_name;
 		if (FT_HAS_KERNING(m_ft_face))
 			qDebug() << "Font face have freetype compatible kerning table";
 		else
