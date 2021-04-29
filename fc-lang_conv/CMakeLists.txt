@@ -8,6 +8,12 @@ set(SRC_LIST
 	main.c
 )
 
+if(WIN32)
+	set(SRC_LIST ${SRC_LIST}
+		getline_win32.c
+	)
+endif(WIN32)
+
 set(LDADD_LIBS)
 if(WIN32)
 	# -mconsole -> console application (with terminal screen)

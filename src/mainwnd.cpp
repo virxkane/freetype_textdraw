@@ -36,6 +36,11 @@ GMainWindow::GMainWindow(QWidget *parent)
 	ui->textColorBox->setDefaultColor(QColor(Qt::black));
 	ui->backgroundColorBox->setDefaultColor(QColor::fromRgb(200, 240, 255));
 
+#ifdef _WIN32
+	// Override default font file
+	ui->fontLineEdit->setText("c:/Windows/Fonts/NotoSerif-Regular.ttf");
+#endif
+
 	onFontChanged();
 }
 
