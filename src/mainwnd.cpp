@@ -111,11 +111,27 @@ void GMainWindow::slot_antialiasingChanged(int index)
 			ui->gammaBox->setEnabled(true);
 			break;
 		case 2:
-			mode = GLowLevelTextRender::AntialiasLCD;
+			mode = GLowLevelTextRender::AntialiasLCD_RGB;
 			ui->gammaBox->setEnabled(true);
 			break;
 		case 3:
-			mode = GLowLevelTextRender::AntialiasLCD_V;
+			mode = GLowLevelTextRender::AntialiasLCD_BGR;
+			ui->gammaBox->setEnabled(true);
+			break;
+		case 4:
+			mode = GLowLevelTextRender::AntialiasLCD_PenTile;
+			ui->gammaBox->setEnabled(true);
+			break;
+		case 5:
+			mode = GLowLevelTextRender::AntialiasLCD_V_RGB;
+			ui->gammaBox->setEnabled(true);
+			break;
+		case 6:
+			mode = GLowLevelTextRender::AntialiasLCD_V_BGR;
+			ui->gammaBox->setEnabled(true);
+			break;
+		case 7:
+			mode = GLowLevelTextRender::AntialiasLCD_V_PenTile;
 			ui->gammaBox->setEnabled(true);
 			break;
 		default:

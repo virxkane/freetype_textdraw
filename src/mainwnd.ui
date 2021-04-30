@@ -74,7 +74,7 @@
       <item>
        <widget class="QComboBox" name="antialiasBox">
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <item>
          <property name="text">
@@ -84,6 +84,36 @@
         <item>
          <property name="text">
           <string>Gray</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD (RGB)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD (BGR)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD (PenTile)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD_V (RGB)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD_V (BGR)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LCD_V (PenTile)</string>
          </property>
         </item>
        </widget>
@@ -264,7 +294,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

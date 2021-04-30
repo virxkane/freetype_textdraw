@@ -27,6 +27,9 @@
 
 #include <math.h>
 
+#include FT_LCD_FILTER_H
+#include FT_CONFIG_OPTIONS_H
+
 //#define _DEBUG_DRAW
 
 GLowLevelTextRender::GLowLevelTextRender(QWidget *parent)
@@ -158,10 +161,6 @@ bool GLowLevelTextRender::renderText()
 	}
 	m_offscreen->fill(m_backgroundColor);
 
-	QPainter p(m_offscreen);
-	QImage* glyphImage = new QImage(20, 20, QImage::Format_ARGB32);
-
-	int kerning = 0;
 	QVector<uint> ucs4_data = m_text.toUcs4();
 
 #define HARFBUZZ_SHAPING	1
@@ -196,11 +195,11 @@ bool GLowLevelTextRender::renderText()
 #endif
 
 	FT_Error error;
-	int pen_x, pen_y;
 	FT_UInt glyph_index;
 	FT_UInt prev_glyph_index;
-	pen_x = 10;
-	pen_y = 10 + m_d->m_ft_face->size->metrics.y_ppem;
+	int pen_x = 10;
+	int pen_y = 10 + m_d->m_ft_face->size->metrics.y_ppem;
+	int glyph_pos_x, glyph_pos_y;
 	FT_Render_Mode ft_render_mode;
 	switch (m_antialiasingMode)
 	{
@@ -210,16 +209,87 @@ bool GLowLevelTextRender::renderText()
 		case AntialiasGray:
 			ft_render_mode = FT_RENDER_MODE_NORMAL;
 			break;
-		case AntialiasLCD:
+		case AntialiasLCD_RGB:
+		case AntialiasLCD_BGR:
+		case AntialiasLCD_PenTile:
 			ft_render_mode = FT_RENDER_MODE_LCD;
 			break;
-		case AntialiasLCD_V:
+		case AntialiasLCD_V_RGB:
+		case AntialiasLCD_V_BGR:
+		case AntialiasLCD_V_PenTile:
 			ft_render_mode = FT_RENDER_MODE_LCD_V;
 			break;
 		default:
 			ft_render_mode = FT_RENDER_MODE_NORMAL;
 			break;
 	}
+#ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+	// ClearType-style LCD rendering
+	switch (m_antialiasingMode)
+	{
+		case AntialiasLCD_RGB:
+		case AntialiasLCD_BGR:
+		case AntialiasLCD_V_RGB:
+		case AntialiasLCD_V_BGR:
+			// ClearType-style LCD rendering
+			qDebug() << "Using ClearType-style LCD rendering";
+#if 1
+			//error = FT_Library_SetLcdFilter(m_d->m_ft_library, FT_LCD_FILTER_NONE);
+			error = FT_Library_SetLcdFilter(m_d->m_ft_library, FT_LCD_FILTER_DEFAULT);
+			//error = FT_Library_SetLcdFilter(m_d->m_ft_library, FT_LCD_FILTER_LIGHT);
+			if (0 != error)
+				qDebug() << "FT_Library_SetLcdFilter() failed, error =" << error;
+#else
+			{
+				//unsigned char weights[5] = { 0x08, 0x4D, 0x56, 0x4D, 0x08 };		// default
+				unsigned char weights[5] = { 0x00, 0x55, 0x56, 0x55, 0x00 };		// light
+				//unsigned char weights[5] = { 0x00, 0x55, 0x55, 0x55, 0x00 };		// Boxy 3-tap filter {0, ⅓, ⅓, ⅓, 0}
+				error = FT_Library_SetLcdFilterWeights(m_d->m_ft_library, weights);
+				if (0 != error)
+					qDebug() << "FT_Library_SetLcdWeights() failed, error =" << error;
+			}
+#endif
+			break;
+	}
+#else
+	// Harmony LCD rendering
+	switch (m_antialiasingMode)
+	{
+		case AntialiasLCD_RGB:
+		case AntialiasLCD_V_RGB:
+			{
+				qDebug() << "Using Harmony LCD rendering";
+				// {{-⅓, 0}, {0, 0}, {⅓, 0}}
+				FT_Vector sub[3] = { {-21, 0}, {0, 0}, {21, 0} };
+				error = FT_Library_SetLcdGeometry(m_d->m_ft_library, sub);
+				if (0 != error)
+					qDebug() << "FT_Library_SetLcdGeometry() failed, error =" << error;
+			}
+			break;
+		case AntialiasLCD_BGR:
+		case AntialiasLCD_V_BGR:
+			{
+				qDebug() << "Using Harmony LCD rendering";
+				// {{⅓, 0}, {0, 0}, {-⅓, 0}}
+				FT_Vector sub[3] = { {21, 0}, {0, 0}, {-21, 0} };
+				error = FT_Library_SetLcdGeometry(m_d->m_ft_library, sub);
+				if (0 != error)
+					qDebug() << "FT_Library_SetLcdGeometry() failed, error =" << error;
+			}
+			break;
+		case AntialiasLCD_PenTile:
+		case AntialiasLCD_V_PenTile:
+			{
+				qDebug() << "Using Harmony LCD rendering";
+				// {{-⅙, ¼}, {-⅙, -¼}, {⅓, 0}}
+				FT_Vector sub[3] = { {-11, 16}, {-11, -16}, {22, 0} };
+				error = FT_Library_SetLcdGeometry(m_d->m_ft_library, sub);
+				if (0 != error)
+					qDebug() << "FT_Library_SetLcdGeometry() failed, error =" << error;
+			}
+			break;
+	}
+#endif
 	FT_Int32 ft_load_flag = 0;
 	switch (m_hintingMode)
 	{
@@ -241,6 +311,7 @@ bool GLowLevelTextRender::renderText()
 #if USE_HARFBUZZ && HARFBUZZ_SHAPING
 	for (int i = 0; i < glyph_count; i++)
 #else
+	int kerning = 0;
 	for (int i = 0; i < ucs4_data.size(); i++)
 #endif
 	{
@@ -258,113 +329,14 @@ bool GLowLevelTextRender::renderText()
 		qDebug() << "glyph index" << i << ": glyph index =" << glyph_index;
 #endif
 #endif
-
 		/* load glyph image into the slot (erase previous one) */
 		error = FT_Load_Glyph(m_d->m_ft_face, glyph_index, ft_load_flag);
 		if (0 != error)
 			continue;  /* ignore errors */
-
 		/* convert to an anti-aliased bitmap */
 		error = FT_Render_Glyph(m_d->m_ft_face->glyph, ft_render_mode);
 		if (0 != error)
 			continue;
-
-		if (glyphImage->width() < m_d->m_ft_face->glyph->bitmap.width ||
-				glyphImage->height() < m_d->m_ft_face->glyph->bitmap.rows)
-		{
-			// extend glyph image buffer
-			delete glyphImage;
-			glyphImage = new QImage(m_d->m_ft_face->glyph->bitmap.width, m_d->m_ft_face->glyph->bitmap.rows, QImage::Format_ARGB32);
-		}
-		if (m_d->m_ft_face->glyph->bitmap.buffer)
-		{
-			if (FT_PIXEL_MODE_MONO == m_d->m_ft_face->glyph->bitmap.pixel_mode)	// 1-bit gray (mono)
-			{
-				QRgb* dptr;
-				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
-				{
-					int g_x, g_r, k, bitNo;
-					unsigned char* sptr;
-					unsigned char mask;
-					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
-					{
-						sptr = m_d->m_ft_face->glyph->bitmap.buffer + g_r*m_d->m_ft_face->glyph->bitmap.pitch;
-						dptr = (QRgb*)glyphImage->scanLine(g_r);
-						for (k = 0; k < m_d->m_ft_face->glyph->bitmap.pitch; k++, sptr++)
-						{
-							for (bitNo = 0; bitNo < 8; bitNo++)
-							{
-								g_x = k*8 + (7 - bitNo);
-								if (g_x < m_d->m_ft_face->glyph->bitmap.width)
-								{
-									mask = (1 << bitNo);
-									// glyph color at (g_x, g_y) in sptr[k]{7 - bitNo}
-									if (*sptr & mask)
-										dptr[g_x] = qRgba(m_textColor.red(), m_textColor.green(), m_textColor.blue(), 255);
-									else
-										dptr[g_x] = qRgba(0, 0, 0, 0);
-								}
-							}
-						}
-					}
-				}
-			}
-			else if (FT_PIXEL_MODE_GRAY == m_d->m_ft_face->glyph->bitmap.pixel_mode)	// 8-bit gray
-			{
-				//glyphImage->fill(QColor(Qt::white));
-				QRgb* dptr;
-				double alpha;
-				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
-				{
-					int g_x, g_r;
-					unsigned char* sptr;
-					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
-					{
-						sptr = m_d->m_ft_face->glyph->bitmap.buffer + g_r*m_d->m_ft_face->glyph->bitmap.pitch;
-						dptr = (QRgb*)glyphImage->scanLine(g_r);
-						for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
-						{
-							// now in ptr[g_x] - alpha
-							// in dptr[g_x] - target RGBA values
-							// transform 0 - 255 range to 0.0 - 1.0
-							alpha = ((double)sptr[g_x])/255.0;
-							// apply inverse gamma correction
-							alpha = 1.0 - pow(1.0 - alpha, m_gamma);
-							dptr[g_x] = qRgba(m_textColor.red(), m_textColor.green(), m_textColor.blue(), (int)(alpha*255.0));
-							//dptr[g_x] += qRgba(m_backgroundColor.red(), m_backgroundColor.green(), m_backgroundColor.blue(), (int)((1.0 - alpha)*255.0));
-						}
-					}
-				}
-			}
-			else if (FT_PIXEL_MODE_BGRA == m_d->m_ft_face->glyph->bitmap.pixel_mode)
-			{
-				//glyphImage->fill(QColor(Qt::white));
-				QRgb* dptr;
-				double alpha;
-				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
-				{
-					int g_x, g_r;
-					unsigned char* sptr;
-					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
-					{
-						sptr = m_d->m_ft_face->glyph->bitmap.buffer + g_r*m_d->m_ft_face->glyph->bitmap.pitch;
-						dptr = (QRgb*)glyphImage->scanLine(g_r);
-						for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
-						{
-							// now in ptr[g_x] - alpha
-							// in dptr[g_x] - target RGBA values
-							// transform 0 - 255 range to 0.0 - 1.0
-							alpha = ((double)sptr[4*g_x + 3])/255.0;
-							// apply inverse gamma correction
-							alpha = 1.0 - pow(1.0 - alpha, m_gamma);
-							dptr[g_x] = qRgba(sptr[4*g_x + 2], sptr[4*g_x + 1], sptr[4*g_x], (int)(alpha*255.0));
-							dptr[g_x] = qUnpremultiply(dptr[g_x]);
-						}
-					}
-				}
-			}
-			else
-				qDebug() << "Unsupported bitmap pixel mode (" << (int)m_d->m_ft_face->glyph->bitmap.pixel_mode << ")";
 #if USE_HARFBUZZ && !HARFBUZZ_SHAPING
 			// get kerning
 			if (m_useKerning)
@@ -377,15 +349,7 @@ bool GLowLevelTextRender::renderText()
 					qDebug() << "i =" << i << "kerning =" << kerning;
 				}
 			}
-#endif
-#if USE_HARFBUZZ && HARFBUZZ_SHAPING
-			// Non zero value of glyph_pos[i].y_offset can be found with diacritical mark and using font "Noto Nastaliq Urdu".
-			p.drawImage(pen_x + m_d->m_ft_face->glyph->bitmap_left + (glyph_pos[i].x_offset >> 6),
-						pen_y - m_d->m_ft_face->glyph->bitmap_top - (glyph_pos[i].y_offset >> 6),
-						*glyphImage, 0, 0,
-						m_d->m_ft_face->glyph->bitmap.width,
-						m_d->m_ft_face->glyph->bitmap.rows);
-#else
+#elif !USE_HARFBUZZ
 			FT_Vector delta;
 			if (m_useKerning)
 			{
@@ -398,12 +362,252 @@ bool GLowLevelTextRender::renderText()
 						kerning = delta.x >> 6;
 				}
 			}
-			p.drawImage(pen_x + m_d->m_ft_face->glyph->bitmap_left + kerning,
-						pen_y - m_d->m_ft_face->glyph->bitmap_top,
-						*glyphImage, 0, 0,
-						m_d->m_ft_face->glyph->bitmap.width,
-						m_d->m_ft_face->glyph->bitmap.rows);
 #endif
+#if USE_HARFBUZZ && HARFBUZZ_SHAPING
+		glyph_pos_x = pen_x + m_d->m_ft_face->glyph->bitmap_left + (glyph_pos[i].x_offset >> 6);
+		glyph_pos_y = pen_y - m_d->m_ft_face->glyph->bitmap_top - (glyph_pos[i].y_offset >> 6);
+#else
+		glyph_pos_x = pen_x + m_d->m_ft_face->glyph->bitmap_left + kerning;
+		glyph_pos_y = pen_y - m_d->m_ft_face->glyph->bitmap_top;
+#endif
+		if (m_d->m_ft_face->glyph->bitmap.buffer)
+		{
+			switch (m_d->m_ft_face->glyph->bitmap.pixel_mode)
+			{
+			case FT_PIXEL_MODE_MONO:		// 1-bit gray (mono)
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					QRgb* dptr;
+					int g_x, g_r, k, bitNo;
+					unsigned char* sptr = m_d->m_ft_face->glyph->bitmap.buffer;
+					unsigned char mask;
+					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
+					{
+						int y = glyph_pos_y + g_r;
+						if (y >= 0 && y < m_offscreen->height())
+						{
+							dptr = (QRgb*)m_offscreen->scanLine(y);
+							for (k = 0; k < m_d->m_ft_face->glyph->bitmap.pitch; k++, sptr++)
+							{
+								for (bitNo = 0; bitNo < 8; bitNo++)
+								{
+									g_x = k*8 + (7 - bitNo);
+									int x = glyph_pos_x + g_x;
+									if (x >= 0 && x < m_offscreen->width())
+									{
+										if (g_x < m_d->m_ft_face->glyph->bitmap.width)
+										{
+											mask = (1 << bitNo);
+											// glyph color at (g_x, g_y) in sptr[k]{7 - bitNo}
+											if (*sptr & mask)
+												dptr[x] = m_textColor.rgba();
+											//else
+											//	dptr[x] = m_backgroundColor.rgba();
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				break;
+			case FT_PIXEL_MODE_GRAY:		// 8-bit gray
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					QRgb* dptr;
+					int alpha;
+					int g_x, g_r;
+					unsigned char* sptr = m_d->m_ft_face->glyph->bitmap.buffer;
+					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
+					{
+						int y = glyph_pos_y + g_r;
+						if (y >= 0 && y < m_offscreen->height())
+						{
+							dptr = (QRgb*)m_offscreen->scanLine(y);
+							for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
+							{
+								int x = glyph_pos_x + g_x;
+								if (x >= 0 && x < m_offscreen->width())
+								{
+									// now in sptr[g_x] - alpha
+									// in dptr[x] - target RGBA values
+									alpha = sptr[g_x];
+									// apply inverse gamma correction
+									alpha = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha)/255.0, m_gamma)));
+									// blending function (OVER operator)
+									// See https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_render_glyph
+									int r = (alpha*m_textColor.red() + (255 - alpha)*qRed(dptr[x]))/255;
+									int g = (alpha*m_textColor.green() + (255 - alpha)*qGreen(dptr[x]))/255;
+									int b = (alpha*m_textColor.blue() + (255 - alpha)*qBlue(dptr[x]))/255;
+									dptr[x] = qRgba(r, g, b, m_textColor.alpha());
+								}
+							}
+						}
+						sptr += m_d->m_ft_face->glyph->bitmap.pitch;
+					}
+				}
+				break;
+			case FT_PIXEL_MODE_LCD:			// 24-bit RGB/BGR
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					QRgb* dptr;
+					int alpha_r;
+					int alpha_g;
+					int alpha_b;
+					int g_x, g_r;
+					int dg_x;
+					unsigned char* sptr = m_d->m_ft_face->glyph->bitmap.buffer;
+					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
+					{
+						int y = glyph_pos_y + g_r;
+						if (y >= 0 && y < m_offscreen->height())
+						{
+							dptr = (QRgb*)m_offscreen->scanLine(y);
+							for (g_x = 0, dg_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x += 3, dg_x++)
+							{
+								int x = glyph_pos_x + dg_x;
+								if (x >= 0 && x < m_offscreen->width())
+								{
+									// now in sptr[g_x]   - alpha (red)
+									//     in sptr[g_x+1] - alpha (green)
+									//     in sptr[g_x+2] - alpha (blue)
+									// in dptr[x] - target RGBA values
+#ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+									if (AntialiasLCD_BGR == m_antialiasingMode)
+									{
+										alpha_r = sptr[g_x+2];
+										alpha_g = sptr[g_x+1];
+										alpha_b = sptr[g_x];
+									}
+									else			// assumed RGB
+#endif
+									{
+										alpha_r = sptr[g_x];
+										alpha_g = sptr[g_x+1];
+										alpha_b = sptr[g_x+2];
+									}
+									// apply inverse gamma correction
+									alpha_r = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_r)/255.0, m_gamma)));
+									alpha_g = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_g)/255.0, m_gamma)));
+									alpha_b = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_b)/255.0, m_gamma)));
+									// blending function (OVER operator)
+									// See https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_render_glyph
+									int r = (alpha_r*m_textColor.red() + (255 - alpha_r)*qRed(dptr[x]))/255;
+									int g = (alpha_g*m_textColor.green() + (255 - alpha_g)*qGreen(dptr[x]))/255;
+									int b = (alpha_b*m_textColor.blue() + (255 - alpha_b)*qBlue(dptr[x]))/255;
+									dptr[x] = qRgba(r, g, b, m_textColor.alpha());
+								}
+							}
+						}
+						sptr += m_d->m_ft_face->glyph->bitmap.pitch;
+					}
+				}
+				break;
+			case FT_PIXEL_MODE_LCD_V:		// vertical 24-bit RGB/BGR
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					QRgb* dptr;
+					int alpha_r;
+					int alpha_g;
+					int alpha_b;
+					int g_x, g_r;
+					int dg_r;
+					unsigned char* sptr;
+					for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
+					{
+						int x = glyph_pos_x + g_x;
+						if (x >= 0 && x < m_offscreen->width())
+						{
+							sptr = m_d->m_ft_face->glyph->bitmap.buffer;
+							for (g_r = 0, dg_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r+=3, dg_r++)
+							{
+								int y = glyph_pos_y + dg_r;
+								if (y >= 0 && y < m_offscreen->height())
+								{
+									dptr = (QRgb*)m_offscreen->scanLine(y);
+									// now in sptr[g_x]   - alpha (red)
+									//     in sptr[g_x+1] - alpha (green)
+									//     in sptr[g_x+2] - alpha (blue)
+									// in dptr[x] - target RGBA values
+#ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+									if (AntialiasLCD_V_BGR == m_antialiasingMode)
+									{
+										alpha_r = sptr[g_x + 2*m_d->m_ft_face->glyph->bitmap.pitch];
+										alpha_g = sptr[g_x + m_d->m_ft_face->glyph->bitmap.pitch];
+										alpha_b = sptr[g_x];
+									}
+									else			// assumed RGB
+#endif
+									{
+										alpha_r = sptr[g_x];
+										alpha_g = sptr[g_x + m_d->m_ft_face->glyph->bitmap.pitch];
+										alpha_b = sptr[g_x + 2*m_d->m_ft_face->glyph->bitmap.pitch];
+									}
+									// apply inverse gamma correction
+									alpha_r = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_r)/255.0, m_gamma)));
+									alpha_g = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_g)/255.0, m_gamma)));
+									alpha_b = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha_b)/255.0, m_gamma)));
+									// blending function (OVER operator)
+									// See https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_render_glyph
+									int r = (alpha_r*m_textColor.red() + (255 - alpha_r)*qRed(dptr[x]))/255;
+									int g = (alpha_g*m_textColor.green() + (255 - alpha_g)*qGreen(dptr[x]))/255;
+									int b = (alpha_b*m_textColor.blue() + (255 - alpha_b)*qBlue(dptr[x]))/255;
+									dptr[x] = qRgba(r, g, b, m_textColor.alpha());
+								}
+								sptr += 3*m_d->m_ft_face->glyph->bitmap.pitch;
+							}
+						}
+					}
+				}
+				break;
+			case FT_PIXEL_MODE_BGRA:		// 32-bit BGRA
+				if (m_d->m_ft_face->glyph->bitmap.pitch > 0)
+				{
+					QRgb* dptr;
+					int alpha;
+					int g_x, g_r;
+					unsigned char* sptr = m_d->m_ft_face->glyph->bitmap.buffer;
+					for (g_r = 0; g_r < m_d->m_ft_face->glyph->bitmap.rows; g_r++)
+					{
+						int y = glyph_pos_y + g_r;
+						if (y >= 0 && y < m_offscreen->height())
+						{
+							dptr = (QRgb*)m_offscreen->scanLine(y);
+							for (g_x = 0; g_x < m_d->m_ft_face->glyph->bitmap.width; g_x++)
+							{
+								int x = glyph_pos_x + g_x;
+								if (x >= 0 && x < m_offscreen->width())
+								{
+									// now in sptr[4*g_x]   - blue
+									//     in sptr[4*g_x+1] - green
+									//     in sptr[4*g_x+2] - red
+									//     in sptr[4*g_x+3] - alpha
+									// in dptr[x] - target RGBA values
+									// transform 0 - 255 range to 0.0 - 1.0
+									alpha = sptr[4*g_x + 3];
+									// apply inverse gamma correction
+									alpha = (int)(255.0*(1.0 - pow(1.0 - ((double)alpha)/255.0, m_gamma)));
+									int r = sptr[4*g_x+2];
+									int g = sptr[4*g_x+1];
+									int b = sptr[4*g_x];
+									// blending function (OVER operator)
+									// See https://www.freetype.org/freetype2/docs/reference/ft2-base_interface.html#ft_render_glyph
+									r = (alpha*r + (255 - alpha)*qRed(dptr[x]))/255;
+									g = (alpha*g + (255 - alpha)*qGreen(dptr[x]))/255;
+									b = (alpha*b + (255 - alpha)*qBlue(dptr[x]))/255;
+									dptr[x] = qRgba(r, g, b, alpha);
+									dptr[x] = qUnpremultiply(dptr[x]);
+								}
+							}
+						}
+						sptr += m_d->m_ft_face->glyph->bitmap.pitch;
+					}
+				}
+				break;
+			default:
+				qDebug() << "Unsupported bitmap pixel mode (" << (int)m_d->m_ft_face->glyph->bitmap.pixel_mode << ")";
+				break;
+			}
 			prev_glyph_index = glyph_index;
 		}
 		/* increment pen position */

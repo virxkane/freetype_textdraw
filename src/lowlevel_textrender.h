@@ -34,8 +34,12 @@ public:
 	{
 		AntialiasNone,
 		AntialiasGray,
-		AntialiasLCD,
-		AntialiasLCD_V
+		AntialiasLCD_RGB,
+		AntialiasLCD_BGR,
+		AntialiasLCD_PenTile,
+		AntialiasLCD_V_RGB,
+		AntialiasLCD_V_BGR,
+		AntialiasLCD_V_PenTile
 	};
 	enum HintingMode
 	{
