@@ -289,7 +289,7 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 {
 	bool fullSupport = false;
 	bool partialSupport = false;
-	struct fc_lang_catalog* lang_ptr = fc_lang_cat;
+	const struct fc_lang_catalog* lang_ptr = fc_lang_cat;
 	int i;
 	bool found = false;
 	for (i = 0; i < fc_lang_cat_sz; i++)

@@ -48,7 +48,7 @@ echo '#include <string.h>' >> "${cat_srcfile}"
 echo >> "${cat_srcfile}"
 
 echo "#define FC_LANG_CAT_SZ	${cat_sz}" >> "${cat_srcfile}"
-echo "struct fc_lang_catalog fc_lang_cat[] = {" >> "${cat_srcfile}"
+echo "const struct fc_lang_catalog fc_lang_cat[] = {" >> "${cat_srcfile}"
 
 # fill fc-lang table
 for f in ${orth_src_files}
@@ -60,7 +60,7 @@ do
 done
 
 echo "};" >> "${cat_srcfile}"
-echo "unsigned int fc_lang_cat_sz = ${cat_sz};" >> "${cat_srcfile}"
+echo "const unsigned int fc_lang_cat_sz = ${cat_sz};" >> "${cat_srcfile}"
 echo >> "${cat_srcfile}"
 
 cat "@CMAKE_CURRENT_SOURCE_DIR@/fc-lang-cat_find.c.tmpl" >> "${cat_srcfile}"

@@ -4,7 +4,7 @@
 // https://gitlab.freedesktop.org/fontconfig/fontconfig/tree/master/fc-lang
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
-unsigned int my_lang_orth_chars[] = {
+const unsigned int my_lang_orth_chars[] = {
 	0xf0f0ffff, 0x1000, 0x1020,	// range
 	0x1021,
 	0xf0f0ffff, 0x1023, 0x1027,	// range

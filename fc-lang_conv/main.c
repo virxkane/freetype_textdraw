@@ -133,7 +133,7 @@ int processFile(const char* langName, const char *sourceFileName, const char *de
 	fprintf(fout, "// https://gitlab.freedesktop.org/fontconfig/fontconfig/tree/master/fc-lang\n");
 	fprintf(fout, "// by fc-lang_conv at https://github.com/virxkane/freetype_textdraw\n");
 	fprintf(fout, "\n");
-	fprintf(fout, "unsigned int %s_lang_orth_chars[] = {\n", langName_LC);
+	fprintf(fout, "const unsigned int %s_lang_orth_chars[] = {\n", langName_LC);
 	count = parseFile(dirName, fin, fout);
 	fprintf(fout, "};\n");
 	//fprintf(fout, "unsigned int %s_lang_orth_size = %u;\n", langName_LC, count);

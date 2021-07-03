@@ -4,7 +4,7 @@
 // https://gitlab.freedesktop.org/fontconfig/fontconfig/tree/master/fc-lang
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
-unsigned int ja_lang_orth_chars[] = {
+const unsigned int ja_lang_orth_chars[] = {
 	0x3000,
 	0x3001,
 	0x3002,

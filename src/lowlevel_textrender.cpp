@@ -117,7 +117,7 @@ QStringList GLowLevelTextRender::getSupportedLanguages()
 	qDebug() << "number of records in fc_lang_cat =" << fc_lang_cat_sz;
 	int sz = sizeof(fc_lang_catalog)*fc_lang_cat_sz;
 
-	struct fc_lang_catalog* langPtr = fc_lang_cat;
+	const struct fc_lang_catalog* langPtr = fc_lang_cat;
 	for (int i = 0; i < fc_lang_cat_sz; i++)
 	{
 		sz += strlen(langPtr->lang_code) + 1;
