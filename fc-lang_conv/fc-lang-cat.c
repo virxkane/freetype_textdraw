@@ -169,7 +169,9 @@
 #include "files/pap_an_orth.c"
 #include "files/pap_aw_orth.c"
 #include "files/pa_pk_orth.c"
+#include "files/pes_orth.c"
 #include "files/pl_orth.c"
+#include "files/prs_orth.c"
 #include "files/ps_af_orth.c"
 #include "files/ps_pk_orth.c"
 #include "files/pt_orth.c"
@@ -255,7 +257,7 @@
 
 #include <string.h>
 
-#define FC_LANG_CAT_SZ	246
+#define FC_LANG_CAT_SZ	248
 struct fc_lang_catalog fc_lang_cat[] = {
 	"aa", AA_LANG_ORTH_SZ, aa_lang_orth_chars,
 	"ab", AB_LANG_ORTH_SZ, ab_lang_orth_chars,
@@ -420,7 +422,9 @@ struct fc_lang_catalog fc_lang_cat[] = {
 	"pap_an", PAP_AN_LANG_ORTH_SZ, pap_an_lang_orth_chars,
 	"pap_aw", PAP_AW_LANG_ORTH_SZ, pap_aw_lang_orth_chars,
 	"pa_pk", PA_PK_LANG_ORTH_SZ, pa_pk_lang_orth_chars,
+	"pes", PES_LANG_ORTH_SZ, pes_lang_orth_chars,
 	"pl", PL_LANG_ORTH_SZ, pl_lang_orth_chars,
+	"prs", PRS_LANG_ORTH_SZ, prs_lang_orth_chars,
 	"ps_af", PS_AF_LANG_ORTH_SZ, ps_af_lang_orth_chars,
 	"ps_pk", PS_PK_LANG_ORTH_SZ, ps_pk_lang_orth_chars,
 	"pt", PT_LANG_ORTH_SZ, pt_lang_orth_chars,
@@ -504,7 +508,7 @@ struct fc_lang_catalog fc_lang_cat[] = {
 	"zh_tw", ZH_TW_LANG_ORTH_SZ, zh_tw_lang_orth_chars,
 	"zu", ZU_LANG_ORTH_SZ, zu_lang_orth_chars,
 };
-unsigned int fc_lang_cat_sz = 246;
+unsigned int fc_lang_cat_sz = 248;
 
 
 struct fc_lang_catalog* fc_lang_cat_find(const char* lang_code)
