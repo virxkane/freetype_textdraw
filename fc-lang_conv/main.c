@@ -25,6 +25,7 @@
 #include <limits.h>
 
 #define MAX_LANG_LEN		20
+#define CODE_IN_RANGE		0xF0F0FFFF		// By defifnition this is invalid code point.
 
 int processFile(const char* langName, const char* sourceFileName, const char* destFileName);
 
@@ -299,7 +300,7 @@ int parseFile(const char *dirName, FILE* fin, FILE* fout)
 						}
 						else
 						{
-							fprintf(fout, "\t2, 0x%04x, 0x%04x,	// range\n", first, second);
+							fprintf(fout, "\t0x%08x, 0x%04x, 0x%04x,	// range\n", CODE_IN_RANGE, first, second);
 							count += 3;
 						}
 					}

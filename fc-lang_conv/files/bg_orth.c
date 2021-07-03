@@ -5,11 +5,11 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int bg_lang_orth_chars[] = {
-	2, 0x0410, 0x042a,	// range
+	0xf0f0ffff, 0x0410, 0x042a,	// range
 	0x042c,
-	2, 0x042e, 0x042f,	// range
-	2, 0x0430, 0x044a,	// range
+	0xf0f0ffff, 0x042e, 0x042f,	// range
+	0xf0f0ffff, 0x0430, 0x044a,	// range
 	0x044c,
-	2, 0x044e, 0x044f,	// range
+	0xf0f0ffff, 0x044e, 0x044f,	// range
 };
 #define BG_LANG_ORTH_SZ	14

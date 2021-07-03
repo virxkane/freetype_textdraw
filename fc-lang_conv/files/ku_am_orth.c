@@ -65,6 +65,6 @@ unsigned int ku_am_lang_orth_chars[] = {
 	0x04d9,
 	0x04e6,
 	0x04e7,
-	2, 0x051a, 0x051d,	// range
+	0xf0f0ffff, 0x051a, 0x051d,	// range
 };
 #define KU_AM_LANG_ORTH_SZ	63

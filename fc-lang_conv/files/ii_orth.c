@@ -5,6 +5,6 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int ii_lang_orth_chars[] = {
-	2, 0xa000, 0xa48c,	// range
+	0xf0f0ffff, 0xa000, 0xa48c,	// range
 };
 #define II_LANG_ORTH_SZ	3

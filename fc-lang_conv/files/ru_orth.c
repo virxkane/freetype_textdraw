@@ -6,7 +6,7 @@
 
 unsigned int ru_lang_orth_chars[] = {
 	0x0401,
-	2, 0x0410, 0x044f,	// range
+	0xf0f0ffff, 0x0410, 0x044f,	// range
 	0x0451,
 };
 #define RU_LANG_ORTH_SZ	5

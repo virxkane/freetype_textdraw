@@ -5,10 +5,10 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int my_lang_orth_chars[] = {
-	2, 0x1000, 0x1020,	// range
+	0xf0f0ffff, 0x1000, 0x1020,	// range
 	0x1021,
-	2, 0x1023, 0x1027,	// range
-	2, 0x1029, 0x102a,	// range
-	2, 0x102c, 0x1032,	// range
+	0xf0f0ffff, 0x1023, 0x1027,	// range
+	0xf0f0ffff, 0x1029, 0x102a,	// range
+	0xf0f0ffff, 0x102c, 0x1032,	// range
 };
 #define MY_LANG_ORTH_SZ	13

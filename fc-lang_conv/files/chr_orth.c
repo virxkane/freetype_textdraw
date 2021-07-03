@@ -5,6 +5,6 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int chr_lang_orth_chars[] = {
-	2, 0x13a0, 0x13f4,	// range
+	0xf0f0ffff, 0x13a0, 0x13f4,	// range
 };
 #define CHR_LANG_ORTH_SZ	3

@@ -5,10 +5,10 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int sco_lang_orth_chars[] = {
-	2, 0x0041, 0x005a,	// range
-	2, 0x0061, 0x007a,	// range
+	0xf0f0ffff, 0x0041, 0x005a,	// range
+	0xf0f0ffff, 0x0061, 0x007a,	// range
 	0x01b7,
-	2, 0x021c, 0x021d,	// range
+	0xf0f0ffff, 0x021c, 0x021d,	// range
 	0x0292,
 };
 #define SCO_LANG_ORTH_SZ	11

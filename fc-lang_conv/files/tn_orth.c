@@ -5,12 +5,12 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int tn_lang_orth_chars[] = {
-	2, 0x0041, 0x005a,	// range
-	2, 0x0061, 0x007a,	// range
+	0xf0f0ffff, 0x0041, 0x005a,	// range
+	0xf0f0ffff, 0x0061, 0x007a,	// range
 	0x00ca,
 	0x00ea,
 	0x00d4,
 	0x00f4,
-	2, 0x0160, 0x0161,	// range
+	0xf0f0ffff, 0x0160, 0x0161,	// range
 };
 #define TN_LANG_ORTH_SZ	13

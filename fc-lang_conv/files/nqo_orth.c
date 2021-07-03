@@ -5,6 +5,6 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int nqo_lang_orth_chars[] = {
-	2, 0x07c0, 0x07fa,	// range
+	0xf0f0ffff, 0x07c0, 0x07fa,	// range
 };
 #define NQO_LANG_ORTH_SZ	3

@@ -5,7 +5,7 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int ba_lang_orth_chars[] = {
-	2, 0x0410, 0x044f,	// range
+	0xf0f0ffff, 0x0410, 0x044f,	// range
 	0x0492,
 	0x0493,
 	0x0498,

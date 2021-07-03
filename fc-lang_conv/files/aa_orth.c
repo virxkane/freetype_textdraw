@@ -5,8 +5,8 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int aa_lang_orth_chars[] = {
-	2, 0x0041, 0x005a,	// range
-	2, 0x0061, 0x007a,	// range
+	0xf0f0ffff, 0x0041, 0x005a,	// range
+	0xf0f0ffff, 0x0061, 0x007a,	// range
 	0x00c2,
 	0x00ca,
 	0x00ce,

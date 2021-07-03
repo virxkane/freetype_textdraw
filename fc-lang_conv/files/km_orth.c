@@ -5,10 +5,10 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int km_lang_orth_chars[] = {
-	2, 0x1780, 0x179c,	// range
-	2, 0x179f, 0x17a2,	// range
-	2, 0x17a5, 0x17a7,	// range
-	2, 0x17a9, 0x17b3,	// range
-	2, 0x17b6, 0x17c5,	// range
+	0xf0f0ffff, 0x1780, 0x179c,	// range
+	0xf0f0ffff, 0x179f, 0x17a2,	// range
+	0xf0f0ffff, 0x17a5, 0x17a7,	// range
+	0xf0f0ffff, 0x17a9, 0x17b3,	// range
+	0xf0f0ffff, 0x17b6, 0x17c5,	// range
 };
 #define KM_LANG_ORTH_SZ	15

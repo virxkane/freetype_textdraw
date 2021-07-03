@@ -283,6 +283,8 @@ bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 
 #endif	// USE_HARFBUZZ
 
+#define CODE_IN_RANGE		0xF0F0FFFF		// By defifnition this is invalid code point.
+
 bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 {
 	bool fullSupport = false;
@@ -319,7 +321,7 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 				if (i >= lang_ptr->char_set_sz)
 					break;
 				tmp = lang_ptr->char_set[i];
-				if (2 == tmp)
+				if (CODE_IN_RANGE == tmp)
 				{
 					if (i + 2 < lang_ptr->char_set_sz)
 					{

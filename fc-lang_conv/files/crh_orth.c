@@ -5,8 +5,8 @@
 // by fc-lang_conv at https://github.com/virxkane/freetype_textdraw
 
 unsigned int crh_lang_orth_chars[] = {
-	2, 0x0041, 0x005a,	// range
-	2, 0x0061, 0x007a,	// range
+	0xf0f0ffff, 0x0041, 0x005a,	// range
+	0xf0f0ffff, 0x0061, 0x007a,	// range
 	0x00c2,
 	0x00c7,
 	0x00d1,
@@ -17,8 +17,8 @@ unsigned int crh_lang_orth_chars[] = {
 	0x00f1,
 	0x00f6,
 	0x00fc,
-	2, 0x011e, 0x011f,	// range
-	2, 0x0130, 0x0131,	// range
-	2, 0x015e, 0x015f,	// range
+	0xf0f0ffff, 0x011e, 0x011f,	// range
+	0xf0f0ffff, 0x0130, 0x0131,	// range
+	0xf0f0ffff, 0x015e, 0x015f,	// range
 };
 #define CRH_LANG_ORTH_SZ	25
