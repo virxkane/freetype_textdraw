@@ -19,7 +19,7 @@
 #include "lowlevel_textrender.h"
 #include "lowlevel_textrender_private.h"
 
-#include "fc-lang-cat.h"
+#include "fc-lang-data.h"
 
 #include <QtGui/QPainter>
 
@@ -114,19 +114,19 @@ QStringList GLowLevelTextRender::getSupportedLanguages()
 {
 	QStringList list;
 
-	qDebug() << "number of records in fc_lang_cat =" << fc_lang_cat_sz;
-	int sz = sizeof(fc_lang_catalog)*fc_lang_cat_sz;
+	qDebug() << "number of records in fc_lang_data =" << get_fc_lang_data_size();
+	int sz = sizeof(fc_lang_rec)*get_fc_lang_data_size();
 
-	const struct fc_lang_catalog* langPtr = fc_lang_cat;
-	for (int i = 0; i < fc_lang_cat_sz; i++)
+	const struct fc_lang_rec* lang_ptr = get_fc_lang_data();
+	for (int i = 0; i < get_fc_lang_data_size(); i++)
 	{
-		sz += strlen(langPtr->lang_code) + 1;
-		sz += langPtr->char_set_sz*sizeof(unsigned int);
-		if (m_d->checklanguageSupport(langPtr->lang_code))
-			list.append(QString(langPtr->lang_code));
-		langPtr++;
+		sz += strlen(lang_ptr->lang_code) + 1;
+		sz += lang_ptr->char_set_sz*sizeof(unsigned int);
+		if (m_d->checklanguageSupport(lang_ptr->lang_code))
+			list.append(QString(lang_ptr->lang_code));
+		lang_ptr++;
 	}
-	qDebug() << "sizeof(fc_lang_cat) =" << sz << "bytes = " << sz/1024 << "kb";
+	qDebug() << "sizeof(fc_lang_data) =" << sz << "bytes = " << sz/1024 << "kb";
 	return list;
 }
 

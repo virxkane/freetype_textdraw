@@ -20,7 +20,7 @@
 
 #include <math.h>
 
-#include "fc-lang-cat.h"
+#include "fc-lang-data.h"
 
 #ifdef USE_HARFBUZZ
 // HarfBuzz-Freetype
@@ -289,10 +289,10 @@ bool GLowLevelTextRenderPrivate::checklanguageSupport(const QString& langCode)
 {
 	bool fullSupport = false;
 	bool partialSupport = false;
-	const struct fc_lang_catalog* lang_ptr = fc_lang_cat;
+	const struct fc_lang_rec* lang_ptr = get_fc_lang_data();
 	int i;
 	bool found = false;
-	for (i = 0; i < fc_lang_cat_sz; i++)
+	for (i = 0; i < get_fc_lang_data_size(); i++)
 	{
 		if (langCode.compare(lang_ptr->lang_code) == 0)
 		{
