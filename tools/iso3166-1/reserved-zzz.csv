@@ -1,0 +1,6 @@
+# Added some obsolete/reserved codes that may still be encountered.
+# AN: https://www.iso.org/obp/ui/#iso:code:3166:AN
+# CS: https://www.iso.org/obp/ui/#iso:code:3166:CS
+
+Netherlands Antilles|Antilles néerlandaises|AN|ANT|530
+Serbia and Montenegro|Serbie et Monténégro |CS|CSG|891

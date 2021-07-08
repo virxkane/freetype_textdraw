@@ -35,6 +35,7 @@ const struct iso639_2_rec iso639_2_data[] = {
 EOF
 
 $count = 0;
+$und_index = -1;
 $/="\n";
 foreach $line (@lines) {
 	chomp($line);
@@ -43,6 +44,9 @@ foreach $line (@lines) {
 		my $part2t_c = length($part2t) > 0 ? "\"$part2t\"" : "NULL";
 		my $part1_c = length($part1) > 0 ? "\"$part1\"" : "NULL";
 		print OUTF1 "\t{\"$id\", $part2t_c, $part1_c, \"$ref_name_eng\"},\n";
+		if ("$id" eq "und") {
+			$und_index = $count;
+		}
 		$count++;
 	}
 }
@@ -67,6 +71,7 @@ extern "C" {
 #endif
 
 #define ISO639_2_DATA_SZ	${count}
+#define ISO639_2_UND_INDEX	${und_index}
 
 struct iso639_2_rec {
 	/**

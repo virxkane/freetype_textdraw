@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $inp_filename = "country codes (iso.org).csv";
+$inp_a1_filename = "reserved-zzz.csv";      # some inactive/reserved codes
 $out1_filename = "../../locale_data/iso-3166-1_data.c";
 $out2_filename = "../../locale_data/iso-3166-1_data.h";
 
@@ -18,6 +19,12 @@ if (!open(OUTF2, "> $out2_filename")) {
 }
 @lines = <INF>;
 close(INF);
+
+if (open(INF, "< $inp_a1_filename")) {
+    my @a1_lines = <INF>;
+    push @lines, @a1_lines;
+    close(INF);
+}
 
 print OUTF1 <<EOF;
 // ISO 3166-1 Country Codes.

@@ -257,5 +257,7 @@ const struct iso3166_1_rec iso3166_1_data[] = {
 	{"ZMB", "ZM", "Zambia", 894},
 	{"ZWE", "ZW", "Zimbabwe", 716},
 	{"ALA", "AX", "Åland Islands", 248},
+	{"ANT", "AN", "Netherlands Antilles", 530},
+	{"CSG", "CS", "Serbia and Montenegro", 891},
 };
 

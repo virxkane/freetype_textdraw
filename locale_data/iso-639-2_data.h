@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 #define ISO639_2_DATA_SZ	485
+#define ISO639_2_UND_INDEX	452
 
 struct iso639_2_rec {
 	/**

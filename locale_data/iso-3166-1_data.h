@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-#define ISO3166_1_DATA_SZ	249
+#define ISO3166_1_DATA_SZ	251
 
 struct iso3166_1_rec {
 	/**
