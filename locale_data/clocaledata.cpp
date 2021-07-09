@@ -37,7 +37,7 @@ QString CLocaleData::langTag() const
 
 	QString tag;
 
-	// part 1: main lanuage
+	// part 1: main language
 	if (!m_lang_part1.isEmpty())
 		tag = m_lang_part1;
 	else
@@ -159,14 +159,17 @@ void CLocaleData::parseTag(const QString& langtag)
 					}
 					if (!rec3) {
 						// if not found in ISO-639-3 => search in ISO-639-2 (for scope "collective")
-						// search only by id
-						const struct iso639_2_rec* ptr = &iso639_2_data[0];
+						// search only by id, part1
+						const struct iso639_2_rec* ptr2 = &iso639_2_data[0];
 						for (i = 0; i < ISO639_2_DATA_SZ; i++) {
-							if (part.compare(ptr->id, Qt::CaseInsensitive) == 0) {
-								rec2 = ptr;
+							if (part.compare(ptr2->id, Qt::CaseInsensitive) == 0) {
+								rec2 = ptr2;
+								break;
+							} else if (part.compare(ptr2->part1, Qt::CaseInsensitive) == 0) {
+								rec2 = ptr2;
 								break;
 							}
-							ptr++;
+							ptr2++;
 						}
 					}
 					if (rec3 || rec2)

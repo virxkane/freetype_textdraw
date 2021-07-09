@@ -42,7 +42,7 @@ public:
 		return m_lang_part1;
 	}
 	const QString& langName() const {
-		return m_lang_part2b;
+		return m_lang_name;
 	}
 	const QString& scriptCode() const {
 		return m_script_code;
