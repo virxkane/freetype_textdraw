@@ -70,17 +70,17 @@ extern "C" {
 
 struct iso3166_1_rec {
 	/**
-	 * English short name.
+	 * Alpha-3 code.
 	 */
-	const char* name;
+	const char* alpha3;
 	/**
 	 * Alpha-2 code.
 	 */
 	const char* alpha2;
 	/**
-	 * Alpha-3 code.
+	 * English short name.
 	 */
-	const char* alpha3;
+	const char* name;
 	/**
 	 * Numeric value.
 	 */
