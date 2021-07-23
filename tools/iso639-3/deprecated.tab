@@ -1,0 +1,5 @@
+# Added some obsolete/reserved codes that may still be encountered.
+# mol: https://iso639-3.sil.org/code/mol
+
+Id	Part2B	Part2T	Part1	Scope	Language_Type	Ref_Name	Comment
+mol			mo	I	L	Moldavian	

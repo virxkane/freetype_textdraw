@@ -39,6 +39,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
 	testParse("und_zsye");
 
 	testParse("bh");
+	testParse("mo");
 	
 	// by full name
 	testParse("english");

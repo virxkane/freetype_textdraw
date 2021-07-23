@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $inp_filename = "iso-639-3.tab";
+$inp_a1_filename = "deprecated.tab";      # some deprecated codes
 $out1_filename = "../../locale_data/iso-639-3_data.c";
 $out2_filename = "../../locale_data/iso-639-3_data.h";
 
@@ -18,6 +19,12 @@ if (!open(OUTF2, "> $out2_filename")) {
 }
 @lines = <INF>;
 close(INF);
+
+if (open(INF, "< $inp_a1_filename")) {
+    my @a1_lines = <INF>;
+    push @lines, @a1_lines;
+    close(INF);
+}
 
 print OUTF1 <<EOF;
 // ISO-639-3 Language registry.

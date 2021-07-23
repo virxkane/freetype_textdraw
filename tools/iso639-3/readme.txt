@@ -6,6 +6,9 @@ url: https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab
 file: iso-639-3_Latin1.tab
 url: https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Latin1.tab
 
+file: iso-639-3_Retirements.tab
+url: https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3_Retirements.tab
+
 Format description:
 Id		The three-letter 639-3 identifier
 Part2B		Equivalent 639-2 identifier of the bibliographic application code set, if there is one
