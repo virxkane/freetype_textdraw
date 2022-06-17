@@ -5,9 +5,9 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 # Find the Qt5 libraries
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Core 5.14 REQUIRED)
+find_package(Qt5Gui 5.14 REQUIRED)
+find_package(Qt5Widgets 5.14 REQUIRED)
 
 option(USE_HARFBUZZ "Use HarfBuzz for text shaping" ON)
 option(BUILD_TESTS "Build test programs" OFF)

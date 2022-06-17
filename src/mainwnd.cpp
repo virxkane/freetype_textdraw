@@ -20,6 +20,7 @@
 #include "ui_mainwnd.h"
 
 #include <QtGui/QShowEvent>
+#include <QtGui/QScreen>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QCheckBox>
 
@@ -40,6 +41,10 @@ GMainWindow::GMainWindow(QWidget *parent)
 	// Override default font file
 	ui->fontLineEdit->setText("c:/Windows/Fonts/NotoSerif-Regular.ttf");
 #endif
+
+	qreal dpr = screen()->devicePixelRatio();
+	ui->fontSizeBox->setValue(ui->fontSizeBox->value()*dpr);
+	ui->fontSizeBox->setMaximum(ui->fontSizeBox->maximum()*dpr);
 
 	onFontChanged();
 }

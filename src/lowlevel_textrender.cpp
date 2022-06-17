@@ -22,6 +22,7 @@
 #include "fc-lang-data.h"
 
 #include <QtGui/QPainter>
+#include <QtGui/QScreen>
 
 #include <QtCore/QDebug>
 
@@ -139,6 +140,8 @@ bool GLowLevelTextRender::renderText(const QString& text)
 bool GLowLevelTextRender::renderText()
 {
 	QSize sz = size();
+	qreal dpr = screen()->devicePixelRatio();
+	sz *= dpr;
 	if (sz.width() < 100 || sz.height() < 100)
 		return false;
 	if (!m_d->freetypeIsInited())
@@ -158,6 +161,7 @@ bool GLowLevelTextRender::renderText()
 	if (!m_offscreen)
 	{
 		m_offscreen = new QImage(sz.width(), sz.height(), QImage::Format_RGB32);
+		m_offscreen->setDevicePixelRatio(dpr);
 	}
 	m_offscreen->fill(m_backgroundColor);
 
