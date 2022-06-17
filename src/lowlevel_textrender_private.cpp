@@ -259,11 +259,10 @@ bool GLowLevelTextRenderPrivate::setKerning(bool kerning)
 
 bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 {
-	hb_feature_t* pfeature;
 	if (-1 == m_hb_feature_liga_pos)
 	{
 		// memory realloc
-		void* tmp = realloc(m_hb_features, sizeof(hb_feature_t)*(m_hb_features_count + 1));
+		void* tmp = realloc(m_hb_features, sizeof(hb_feature_t)*(m_hb_features_count + 5));
 		if (tmp)
 		{
 			m_hb_features = (hb_feature_t*)tmp;
@@ -271,13 +270,30 @@ bool GLowLevelTextRenderPrivate::setLigatures(bool liga)
 		else
 			return false;
 		m_hb_feature_liga_pos = m_hb_features_count;
-		m_hb_features_count++;
+		m_hb_features_count += 5;
 	}
-	pfeature = &m_hb_features[m_hb_feature_liga_pos];
+	hb_feature_t *pfeature1 = &m_hb_features[m_hb_feature_liga_pos];
+	hb_feature_t *pfeature2 = &m_hb_features[m_hb_feature_liga_pos + 1];
+	hb_feature_t *pfeature3 = &m_hb_features[m_hb_feature_liga_pos + 2];
+	hb_feature_t *pfeature4 = &m_hb_features[m_hb_feature_liga_pos + 3];
+	hb_feature_t *pfeature5 = &m_hb_features[m_hb_feature_liga_pos + 4];
 	if (liga)
-		hb_feature_from_string("+liga", -1, pfeature);
+	{
+		// See https://en.wikipedia.org/wiki/List_of_typographic_features
+		hb_feature_from_string("+liga", -1, pfeature1); // Standard Ligatures
+		hb_feature_from_string("+rlig", -1, pfeature2); // Required Ligatures
+		hb_feature_from_string("+clig", -1, pfeature3); // Contextual ligatures
+		hb_feature_from_string("+calt", -1, pfeature4); // Contextual alternates
+		hb_feature_from_string("+rclt", -1, pfeature5); // Required Contextual Alternates
+	}
 	else
-		hb_feature_from_string("-liga", -1, pfeature);
+	{
+		hb_feature_from_string("-liga", -1, pfeature1);
+		hb_feature_from_string("-rlig", -1, pfeature2);
+		hb_feature_from_string("-clig", -1, pfeature3);
+		hb_feature_from_string("-calt", -1, pfeature4);
+		hb_feature_from_string("-rclt", -1, pfeature5);
+	}
 	return true;
 }
 
