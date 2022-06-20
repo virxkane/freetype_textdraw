@@ -1,5 +1,5 @@
 # freetype_textdraw demo program
-freetype_textdraw is demo program developed to learch how to use library Freetype to draw any text. 
+freetype_textdraw is demo program developed to learn how to use library Freetype to draw any text. 
 
 ## Features
 Draw some text with customizations:
@@ -18,7 +18,7 @@ Also for selected font you can see for which languages there is a full set of gl
 The most important: you can study sources of this project to write your own.
 
 ### LICENSE
-All source codes are provided under the terms of GNU GPL license, version 3.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 ### Dependencies
 cmake, Freetype, HarfBuzz (optional), Qt5.
